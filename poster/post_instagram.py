@@ -72,9 +72,6 @@ def load(path, default):
 
 
 def main():
-    token = os.environ.get("IG_TOKEN", "").strip()
-    if not token:
-        fail("IG_TOKEN secret is missing. Add it in Settings > Secrets and variables > Actions.")
     dry = os.environ.get("DRY_RUN", "false").lower() == "true"
     day = os.environ.get("POST_DATE") or datetime.datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
 
@@ -86,6 +83,10 @@ def main():
     if not dry and any(p["date"] == day for p in posted):
         print(f"{day} already posted, skipping.")
         return
+
+    token = os.environ.get("IG_TOKEN", "").strip()
+    if not token:
+        fail("IG_TOKEN secret is missing. Add it in Settings > Secrets and variables > Actions.")
 
     me = call("GET", f"{GRAPH}/me", token, {"fields": "user_id,username"})
     ig_id = me.get("user_id") or me.get("id")
