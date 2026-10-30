@@ -1,0 +1,50 @@
+name: Post to TikTok + YouTube
+
+on:
+  schedule:
+    # 02:15 UTC, just after the Instagram run (6:15 pm Pacific in winter). GitHub can start scheduled runs a bit late.
+    # Without the BUFFER_API_KEY secret the run just notes that and posts nothing.
+    - cron: "15 2 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Check everything with a Buffer draft, publish nothing"
+        type: boolean
+        default: true
+      post_date:
+        description: "Schedule date to use (YYYY-MM-DD), blank for today"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: buffer-poster
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Post today's videos
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          POST_DATE: ${{ inputs.post_date }}
+          YOUTUBE_MADE_FOR_KIDS: "true"
+        run: python3 poster/post_buffer.py
+
+      - name: Remember what was posted
+        if: always()
+        run: |
+          if ! git diff --quiet schedule/buffer-posted.json; then
+            git config user.name "greenline-poster"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add schedule/buffer-posted.json
+            git commit -m "Record TikTok + YouTube posts"
+            git pull --rebase -q origin main
+            git push
+          fi
