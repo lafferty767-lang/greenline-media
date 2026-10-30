@@ -1,10 +1,10 @@
 name: Post to Instagram
 
 on:
-  # Paused Oct 30 2026: Logan schedules Reels in the Instagram app instead (Meta's new apps need extra setup).
-  # To turn daily posting back on, add IG_TOKEN and restore:
-  # schedule:
-  #   - cron: "0 2 * * *"   # 02:00 UTC = 6 pm Pacific in winter, 7 pm in summer
+  schedule:
+    # 02:00 UTC = 6 pm Pacific in winter, 7 pm in summer. GitHub can start scheduled runs a bit late.
+    # Without the IG_TOKEN secret the run just notes that and posts nothing.
+    - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
