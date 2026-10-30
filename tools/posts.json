@@ -1,0 +1,325 @@
+[
+ {
+  "id": "06-city-tour",
+  "src": "18_city_flyover.mp4",
+  "hook": [
+   "ONE FUEL COMPANY",
+   "OWNS THIS WHOLE TOWN"
+  ],
+  "captions": [
+   [
+    0.2,
+    3.4,
+    "THE YARD"
+   ],
+   [
+    3.8,
+    6.8,
+    "GLO-LAND"
+   ],
+   [
+    8.5,
+    10.0,
+    "GREENLINE HIGH"
+   ],
+   [
+    10.1,
+    10.85,
+    "THE SUBURBS"
+   ],
+   [
+    11.2,
+    14.2,
+    "MEGA MALL"
+   ],
+   [
+    16.0,
+    18.3,
+    "GREENLINE TOWER"
+   ]
+  ]
+ },
+ {
+  "id": "07-rat-king",
+  "src": "07_sewers_ratking.mp4",
+  "hook": [
+   "HE KNOWS EVERY TUNNEL",
+   "MEET THE RAT KING"
+  ],
+  "pan": [
+   [
+    1.1,
+    2.9
+   ]
+  ],
+  "captions": [
+   [
+    1.0,
+    4.2,
+    "DISPATCH: Shoot the Glo lantern on his back!"
+   ]
+  ],
+  "trim": [
+   4.4,
+   8.9
+  ]
+ },
+ {
+  "id": "08-demolitionist",
+  "src": "14_demolitionist_grenade.mp4",
+  "hook": [
+   "WHY THE DEMOLITIONIST",
+   "COSTS 60 GEMS"
+  ],
+  "captions": [
+   [
+    0.4,
+    3.7,
+    "One Demolitionist grenade..."
+   ],
+   [
+    3.85,
+    6.3,
+    "...and the whole crowd is gone"
+   ]
+  ],
+  "trim": [
+   0,
+   6.6
+  ]
+ },
+ {
+  "id": "09-ice-cream-man",
+  "src": "10_suburbs_icecream.mp4",
+  "hook": [
+   "HEAR THAT JINGLE?",
+   "MEET THE ICE CREAM MAN"
+  ],
+  "pan": [
+   [
+    5.5,
+    7.3
+   ]
+  ],
+  "captions": [
+   [
+    5.4,
+    8.6,
+    "DISPATCH: Shoot the Glo cone in his hand!"
+   ]
+  ]
+ },
+ {
+  "id": "10-eleven-kills",
+  "src": "17_multikill.mp4",
+  "hook": [
+   "11 ZOMBIES DOWN",
+   "IN UNDER 10 SECONDS"
+  ],
+  "captions": [
+   [
+    0.2,
+    3.0,
+    "Auto-fire shoots. You just aim."
+   ],
+   [
+    9.3,
+    11.6,
+    "That's 11!"
+   ]
+  ],
+  "trim": [
+   2.2,
+   11.6
+  ]
+ },
+ {
+  "id": "11-coach",
+  "src": "08_highschool_coach.mp4",
+  "hook": [
+   "GAME'S NOT OVER",
+   "MEET THE COACH"
+  ],
+  "pan": [
+   [
+    5.65,
+    7.2
+   ]
+  ],
+  "captions": [
+   [
+    4.7,
+    7.7,
+    "DISPATCH: Shoot the Glo whistle round his neck!"
+   ]
+  ]
+ },
+ {
+  "id": "12-armory",
+  "src": "16_armory_spin.mp4",
+  "mode": "wide",
+  "hook": [
+   "PICK YOUR GUN",
+   "THEN PICK ITS SKIN"
+  ],
+  "captions": [
+   [
+    2.0,
+    5.5,
+    "Every gun spins in 3D"
+   ],
+   [
+    11.8,
+    14.77,
+    "Then pick a skin for it"
+   ]
+  ]
+ },
+ {
+  "id": "13-mall-cop",
+  "src": "09_mall_mallcop.mp4",
+  "hook": [
+   "THE MALL IS CLOSED",
+   "MEET THE MALL COP"
+  ],
+  "pan": [
+   [
+    6.9,
+    8.7
+   ]
+  ],
+  "captions": [
+   [
+    5.9,
+    8.8,
+    "DISPATCH: Shoot the Glo badge on his chest!"
+   ]
+  ],
+  "trim": [
+   0,
+   12.15
+  ]
+ },
+ {
+  "id": "14-rooftop-hatch",
+  "src": "15_hatch_climb.mp4",
+  "hook": [
+   "THE START SCREEN",
+   "IS A ROOFTOP HATCH"
+  ],
+  "captions": [
+   [
+    2.0,
+    4.4,
+    "Pop the rooftop hatch..."
+   ],
+   [
+    4.5,
+    6.0,
+    "...climb down..."
+   ],
+   [
+    6.1,
+    7.1,
+    "...to your hideout."
+   ]
+  ],
+  "trim": [
+   0,
+   10.6
+  ],
+  "cut": [
+   6.0,
+   8.6
+  ]
+ },
+ {
+  "id": "15-dr-verde",
+  "src": "11_lab_verde_bubble.mp4",
+  "hook": [
+   "SHE MADE THE GLO",
+   "MEET DR. VERDE"
+  ],
+  "pan": [
+   [
+    3.0,
+    4.3
+   ]
+  ],
+  "captions": [
+   [
+    2.8,
+    5.2,
+    "DISPATCH: Shoot the serum tank on her back!"
+   ],
+   [
+    13.2,
+    15.2,
+    "Then she hides in a Glo bubble!"
+   ]
+  ],
+  "trim": [
+   1.6,
+   16.0
+  ]
+ },
+ {
+  "id": "16-shockwave",
+  "src": "13_overload_shockwave.mp4",
+  "hook": [
+   "SEE THE ORANGE RING?",
+   "MOVE."
+  ],
+  "captions": [
+   [
+    0.5,
+    2.0,
+    "Orange ring on the ground?"
+   ],
+   [
+    2.0,
+    3.5,
+    "That's a shockwave. Get out!"
+   ],
+   [
+    3.6,
+    5.2,
+    "Too slow! Lost 18 HP."
+   ],
+   [
+    5.4,
+    7.0,
+    "Here comes another one!"
+   ]
+  ],
+  "trim": [
+   1.5,
+   8.1
+  ]
+ },
+ {
+  "id": "17-scrap-titan",
+  "src": "12_reactor_titan.mp4",
+  "hook": [
+   "THE REACTOR BUILT HIM",
+   "MEET THE SCRAP TITAN"
+  ],
+  "pan": [
+   [
+    3.0,
+    4.25
+   ]
+  ],
+  "captions": [
+   [
+    2.8,
+    6.0,
+    "DISPATCH: Shoot his plates off the Glo core!"
+   ]
+  ],
+  "trim": [
+   2.0,
+   8.6
+  ]
+ }
+]

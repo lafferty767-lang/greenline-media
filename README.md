@@ -9,4 +9,5 @@ Files here are linked by the social media scheduler, so only finished promo cont
 - `poster/post_instagram.py` + `.github/workflows/instagram.yml` post the day's Reel every evening using the `IG_TOKEN` secret (a Facebook Page key for the GREENLINE Page linked to @playgreenline2026)
 - `schedule/buffer.json` which video goes to TikTok and YouTube Shorts on which day (Pacific time); `schedule/buffer-posted.json` records what went out
 - `poster/post_buffer.py` + `.github/workflows/buffer.yml` send the day's video to TikTok and YouTube every evening through Buffer's official API, using the `BUFFER_API_KEY` secret (a personal key from a free Buffer account with both channels connected)
+- `tools/make_post.py` + `tools/posts.json` turn 16:9 gameplay clips into the vertical posts (logo, hook lines, burned-in captions, boss-card pans)
 - `weekly/` the week's posting pack: video links, captions, YouTube titles and how to schedule them by hand
