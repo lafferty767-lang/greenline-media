@@ -1,4 +1,4 @@
-"""Post today's GREENLINE video to TikTok and YouTube Shorts through Buffer.
+"""Post today's GREENLINE video to TikTok, YouTube Shorts and Facebook Reels through Buffer.
 
 Reads schedule/buffer.json and, for each network, picks the oldest entry that is
 due today or earlier (Pacific time) and not posted there yet. It sends that
@@ -9,8 +9,11 @@ on the next run.
 
 Each schedule entry has a date, a video path, and a block for each network it
 should go to:
-  "tiktok":  {"caption": "..."}
-  "youtube": {"title": "...", "description": "..."}
+  "tiktok":   {"caption": "..."}
+  "youtube":  {"title": "...", "description": "..."}
+  "facebook": {"caption": "...", "first_comment": "..."}  (posted as a Reel; the
+              signup link goes in the first comment, since Facebook limits links in Page posts)
+A network with no channel connected in Buffer is skipped.
 
 Env:
   BUFFER_API_KEY  Buffer personal API key (GitHub secret, never printed)
@@ -40,7 +43,7 @@ MEDIA = os.environ.get("MEDIA_URL", f"https://raw.githubusercontent.com/{REPO}/m
 POLL_SECONDS = int(os.environ.get("POLL_SECONDS", "15"))
 POLL_TRIES = int(os.environ.get("POLL_TRIES", "16"))
 MADE_FOR_KIDS = os.environ.get("YOUTUBE_MADE_FOR_KIDS", "true").lower() == "true"
-NETWORKS = {"tiktok": "TikTok", "youtube": "YouTube"}
+NETWORKS = {"tiktok": "TikTok", "youtube": "YouTube", "facebook": "Facebook"}
 
 CHANNELS = """query($org: OrganizationId!) {
   channels(input: {organizationId: $org}) { id name service isDisconnected isLocked isQueuePaused }
@@ -149,6 +152,12 @@ def build_input(net, entry, channel_id):
     }
     if net == "tiktok":
         inp["text"] = entry["tiktok"]["caption"]
+    elif net == "facebook":
+        fb = entry["facebook"]
+        inp["text"] = fb["caption"]
+        inp["metadata"] = {"facebook": {"type": "reel"}}
+        if fb.get("first_comment"):
+            inp["metadata"]["facebook"]["firstComment"] = fb["first_comment"]
     else:
         yt = entry["youtube"]
         inp["text"] = yt.get("description", "")

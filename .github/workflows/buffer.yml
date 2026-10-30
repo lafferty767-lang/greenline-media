@@ -1,4 +1,4 @@
-name: Post to TikTok + YouTube
+name: Post to TikTok, YouTube + Facebook
 
 on:
   schedule:
@@ -44,7 +44,7 @@ jobs:
             git config user.name "greenline-poster"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add schedule/buffer-posted.json
-            git commit -m "Record TikTok + YouTube posts"
+            git commit -m "Record Buffer posts"
             git pull --rebase -q origin main
             git push
           fi
