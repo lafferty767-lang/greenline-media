@@ -91,7 +91,8 @@ def main():
 
     token = os.environ.get("IG_TOKEN", "").strip()
     if not token:
-        fail("IG_TOKEN secret is missing. Add it in Settings > Secrets and variables > Actions.")
+        print("::notice::IG_TOKEN secret isn't set, so nothing was posted. Add it in Settings > Secrets and variables > Actions to turn posting on.")
+        return
 
     me = call("GET", f"{GRAPH}/me", token, {"fields": "user_id,username"})
     ig_id = me.get("user_id") or me.get("id")
