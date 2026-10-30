@@ -1,8 +1,9 @@
 """Post today's GREENLINE Reel to Instagram.
 
-Reads schedule/instagram.json, finds the entry for today (Pacific time),
-posts it through the Instagram API with Instagram Login, and records it in
-schedule/posted.json so it never posts twice.
+Reads schedule/instagram.json, picks the oldest entry that is due today or
+earlier (Pacific time) and not posted yet, posts it through the Instagram API
+with Instagram Login, and records it in schedule/posted.json. At most one
+Reel goes out per day, and a missed day is caught up on the next run.
 
 Env:
   IG_TOKEN   long-lived Instagram user token (GitHub secret, never printed)
@@ -75,14 +76,18 @@ def main():
     dry = os.environ.get("DRY_RUN", "false").lower() == "true"
     day = os.environ.get("POST_DATE") or datetime.datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
 
-    entry = next((e for e in load(SCHEDULE, []) if e["date"] == day), None)
-    if not entry:
-        print(f"Nothing scheduled for {day}.")
-        return
+    # One Reel a day: the oldest scheduled entry that is due and not posted yet,
+    # so a day that failed (for example before IG_TOKEN was set) is caught up later.
     posted = load(POSTED, [])
-    if not dry and any(p["date"] == day for p in posted):
-        print(f"{day} already posted, skipping.")
+    if not dry and any(p.get("posted_on") == day for p in posted):
+        print(f"Already posted a Reel on {day}, skipping.")
         return
+    done = {p["date"] for p in posted}
+    due = sorted((e for e in load(SCHEDULE, []) if e["date"] <= day and e["date"] not in done), key=lambda e: e["date"])
+    if not due:
+        print(f"Nothing due on {day}.")
+        return
+    entry = due[0]
 
     token = os.environ.get("IG_TOKEN", "").strip()
     if not token:
@@ -90,7 +95,7 @@ def main():
 
     me = call("GET", f"{GRAPH}/me", token, {"fields": "user_id,username"})
     ig_id = me.get("user_id") or me.get("id")
-    print(f"Account: @{me.get('username')}  Post for {day}: {entry['video']}" + ("  (dry run)" if dry else ""))
+    print(f"Account: @{me.get('username')}  Posting {entry['video']} (scheduled {entry['date']})" + ("  (dry run)" if dry else ""))
 
     video_url = f"{MEDIA}/{urllib.parse.quote(entry['video'])}"
     container = call("POST", f"{GRAPH}/{ig_id}/media", token, {
@@ -116,7 +121,7 @@ def main():
         print("Dry run OK: the Reel was prepared but not published.")
     else:
         media_id = call("POST", f"{GRAPH}/{ig_id}/media_publish", token, {"creation_id": container})["id"]
-        posted.append({"date": day, "video": entry["video"], "media_id": media_id})
+        posted.append({"date": entry["date"], "video": entry["video"], "posted_on": day, "media_id": media_id})
         with open(POSTED, "w") as f:
             json.dump(posted, f, indent=2)
             f.write("\n")
