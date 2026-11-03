@@ -2,9 +2,10 @@ name: Post to TikTok, YouTube + Facebook
 
 on:
   schedule:
-    # 02:15 UTC, just after the Instagram run (6:15 pm Pacific in winter). GitHub can start scheduled runs a bit late.
+    # Every two hours: GitHub sometimes starts scheduled runs hours late. The first run of the day
+    # asks Buffer to publish at 6 pm Pacific; the other runs that day do nothing.
     # Without the BUFFER_API_KEY secret the run just notes that and posts nothing.
-    - cron: "15 2 * * *"
+    - cron: "7 */2 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -34,6 +35,8 @@ jobs:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
           POST_DATE: ${{ inputs.post_date }}
+          POST_AT: "18:00"
+          POST_NOW: ${{ github.event_name == 'workflow_dispatch' }}
           YOUTUBE_MADE_FOR_KIDS: "true"
         run: python3 poster/post_buffer.py
 

@@ -2,9 +2,10 @@ name: Post to Instagram
 
 on:
   schedule:
-    # 02:00 UTC = 6 pm Pacific in winter, 7 pm in summer. GitHub can start scheduled runs a bit late.
+    # Every two hours: GitHub sometimes starts scheduled runs hours late, so the Reel goes out
+    # on the first run after 5:30 pm Pacific and the other runs that day do nothing.
     # Without the IG_TOKEN secret the run just notes that and posts nothing.
-    - cron: "0 2 * * *"
+    - cron: "37 */2 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -34,6 +35,8 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
           POST_DATE: ${{ inputs.post_date }}
+          POST_AFTER: "17:30"
+          POST_NOW: ${{ github.event_name == 'workflow_dispatch' }}
         run: python3 poster/post_instagram.py
 
       - name: Remember what was posted

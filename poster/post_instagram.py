@@ -5,6 +5,10 @@ earlier (Pacific time) and not posted yet, posts it through Meta's official
 Instagram API, and records it in schedule/posted.json. At most one Reel goes
 out per day, and a missed day is caught up on the next run.
 
+GitHub often starts scheduled runs late (hours, some days), so the workflow
+runs every two hours and the Reel goes out on the first run after POST_AFTER
+Pacific time. Earlier runs that day do nothing.
+
 IG_TOKEN can be either kind of Meta key:
   - a Facebook Page token (starts with EAA) for the GREENLINE Page that the
     Instagram account is linked to. Made from a long-lived user token, it
@@ -15,6 +19,8 @@ Env:
   IG_TOKEN   the key above (GitHub secret, never printed)
   DRY_RUN    "true" prepares the Reel but does not publish it
   POST_DATE  optional YYYY-MM-DD to use instead of today
+  POST_AFTER Pacific time of day (HH:MM) before which scheduled runs don't post, default 17:30
+  POST_NOW   "true" posts whatever the time (manual runs)
   FB_GRAPH_URL / IG_GRAPH_URL / MEDIA_URL  optional overrides, for local tests
 """
 
@@ -102,7 +108,12 @@ def find_account(token):
 
 def main():
     dry = os.environ.get("DRY_RUN", "false").lower() == "true"
-    day = os.environ.get("POST_DATE") or datetime.datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+    now = datetime.datetime.now(ZoneInfo("America/Los_Angeles"))
+    day = os.environ.get("POST_DATE") or now.date().isoformat()
+    after = os.environ.get("POST_AFTER", "17:30")
+    if not (dry or os.environ.get("POST_DATE") or os.environ.get("POST_NOW", "false").lower() == "true") and now.strftime("%H:%M") < after:
+        print(f"It's {now:%H:%M} Pacific; Reels go out after {after}, so this run does nothing.")
+        return
 
     # One Reel a day: the oldest scheduled entry that is due and not posted yet,
     # so a day that failed (for example before IG_TOKEN was set) is caught up later.
