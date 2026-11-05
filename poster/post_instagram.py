@@ -5,9 +5,10 @@ earlier (Pacific time) and not posted yet, posts it through Meta's official
 Instagram API, and records it in schedule/posted.json. At most one Reel goes
 out per day, and a missed day is caught up on the next run.
 
-GitHub often starts scheduled runs late (hours, some days), so the workflow
-runs every two hours and the Reel goes out on the first run after POST_AFTER
-Pacific time. Earlier runs that day do nothing.
+GitHub starts scheduled runs late and skips many of them, so the workflow is
+set to run every two hours. A run that starts up to MAX_WAIT_HOURS before
+POST_AT (Pacific) waits and posts at POST_AT; a run after POST_AT posts right
+away. Earlier runs, and runs after the day's Reel is out, do nothing.
 
 IG_TOKEN can be either kind of Meta key:
   - a Facebook Page token (starts with EAA) for the GREENLINE Page that the
@@ -19,7 +20,8 @@ Env:
   IG_TOKEN   the key above (GitHub secret, never printed)
   DRY_RUN    "true" prepares the Reel but does not publish it
   POST_DATE  optional YYYY-MM-DD to use instead of today
-  POST_AFTER Pacific time of day (HH:MM) before which scheduled runs don't post, default 17:30
+  POST_AT    Pacific time of day (HH:MM) to post, default 18:00
+  MAX_WAIT_HOURS  how long a run may wait for POST_AT, default 5.5 (jobs stop at 6 hours)
   POST_NOW   "true" posts whatever the time (manual runs)
   FB_GRAPH_URL / IG_GRAPH_URL / MEDIA_URL  optional overrides, for local tests
 """
@@ -110,9 +112,12 @@ def main():
     dry = os.environ.get("DRY_RUN", "false").lower() == "true"
     now = datetime.datetime.now(ZoneInfo("America/Los_Angeles"))
     day = os.environ.get("POST_DATE") or now.date().isoformat()
-    after = os.environ.get("POST_AFTER", "17:30")
-    if not (dry or os.environ.get("POST_DATE") or os.environ.get("POST_NOW", "false").lower() == "true") and now.strftime("%H:%M") < after:
-        print(f"It's {now:%H:%M} Pacific; Reels go out after {after}, so this run does nothing.")
+    on_time = not (dry or os.environ.get("POST_DATE") or os.environ.get("POST_NOW", "false").lower() == "true")
+    h, m = map(int, os.environ.get("POST_AT", "18:00").split(":"))
+    post_at = now.replace(hour=h, minute=m, second=0, microsecond=0)
+    max_wait = datetime.timedelta(hours=float(os.environ.get("MAX_WAIT_HOURS", "5.5")))
+    if on_time and now < post_at - max_wait:
+        print(f"It's {now:%H:%M} Pacific, too early to wait for {post_at:%H:%M}, so this run does nothing.")
         return
 
     # One Reel a day: the oldest scheduled entry that is due and not posted yet,
@@ -132,6 +137,10 @@ def main():
     if not token:
         print("::notice::IG_TOKEN secret isn't set, so nothing was posted. Add it in Settings > Secrets and variables > Actions to turn posting on.")
         return
+
+    if on_time and now < post_at:
+        print(f"Waiting until {post_at:%H:%M} Pacific to post {entry['video']}.", flush=True)
+        time.sleep((post_at - datetime.datetime.now(post_at.tzinfo)).total_seconds())
 
     graph, post_token, ig_id, username = find_account(token)
     print(f"Account: @{username}  Posting {entry['video']} (scheduled {entry['date']})" + ("  (dry run)" if dry else ""))
