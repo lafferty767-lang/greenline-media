@@ -23,6 +23,7 @@ Env:
   POST_AT    Pacific time of day (HH:MM) to post, default 18:00
   MAX_WAIT_HOURS  how long a run may wait for POST_AT, default 5.5 (jobs stop at 6 hours)
   POST_NOW   "true" posts whatever the time (manual runs)
+  IG_UPLOAD  "auto" (link first, then file upload if that fails), "url" or "file"
   FB_GRAPH_URL / IG_GRAPH_URL / MEDIA_URL  optional overrides, for local tests
 """
 
@@ -46,6 +47,9 @@ REPO = os.environ.get("GITHUB_REPOSITORY", "lafferty767-lang/greenline-media")
 MEDIA = os.environ.get("MEDIA_URL", f"https://raw.githubusercontent.com/{REPO}/main").rstrip("/")
 POLL_SECONDS = int(os.environ.get("POLL_SECONDS", "15"))
 POLL_TRIES = int(os.environ.get("POLL_TRIES", "40"))
+ERROR_POLLS = int(os.environ.get("ERROR_POLLS", "6"))
+RUPLOAD = os.environ.get("RUPLOAD_URL", "https://rupload.facebook.com/ig-api-upload").rstrip("/")
+UPLOAD = os.environ.get("IG_UPLOAD", "auto")
 
 
 def fail(msg):
@@ -85,6 +89,48 @@ def load(path, default):
         return default
     with open(path) as f:
         return json.load(f)
+
+
+def make_container(graph, token, ig_id, entry, how):
+    """Start a Reel container from the video's public link ("url") or by uploading the file ("file")."""
+    params = {"media_type": "REELS", "caption": entry["caption"], "share_to_feed": "true"}
+    if how == "url":
+        params["video_url"] = f"{MEDIA}/{urllib.parse.quote(entry['video'])}"
+        return call("POST", f"{graph}/{ig_id}/media", token, params)["id"]
+    params["upload_type"] = "resumable"
+    made = call("POST", f"{graph}/{ig_id}/media", token, params)
+    path = os.path.join(ROOT, entry["video"])
+    size = os.path.getsize(path)
+    uri = made.get("uri") or f"{RUPLOAD}/{graph.rstrip('/').rsplit('/', 1)[-1]}/{made['id']}"
+    with open(path, "rb") as f:
+        req = urllib.request.Request(uri, data=f.read(), method="POST", headers={
+            "Authorization": f"OAuth {token}", "offset": "0", "file_size": str(size)})
+    try:
+        with urllib.request.urlopen(req, timeout=300) as r:
+            json.load(r)
+    except urllib.error.HTTPError as e:
+        print(f"::warning::Instagram file upload failed: HTTP {e.code} {e.reason}")
+    return made["id"]
+
+
+def wait_ready(graph, token, container):
+    """Poll a container until it is ready. Returns None when ready, else what went wrong.
+    An ERROR can clear up on its own, so it is given a few more polls before giving up."""
+    errors = 0
+    for _ in range(POLL_TRIES):
+        status = call("GET", f"{graph}/{container}", token, {"fields": "status_code,status"})
+        code = status.get("status_code")
+        print(f"Video processing: {code}", flush=True)
+        if code == "FINISHED":
+            return None
+        if code == "EXPIRED":
+            return status.get("status") or code
+        if code == "ERROR":
+            errors += 1
+            if errors >= ERROR_POLLS:
+                return status.get("status") or code
+        time.sleep(POLL_SECONDS)
+    return "it took too long to process the video"
 
 
 def find_account(token):
@@ -145,25 +191,17 @@ def main():
     graph, post_token, ig_id, username = find_account(token)
     print(f"Account: @{username}  Posting {entry['video']} (scheduled {entry['date']})" + ("  (dry run)" if dry else ""))
 
-    video_url = f"{MEDIA}/{urllib.parse.quote(entry['video'])}"
-    container = call("POST", f"{graph}/{ig_id}/media", post_token, {
-        "media_type": "REELS",
-        "video_url": video_url,
-        "caption": entry["caption"],
-        "share_to_feed": "true",
-    })["id"]
-
-    for _ in range(POLL_TRIES):
-        status = call("GET", f"{graph}/{container}", post_token, {"fields": "status_code,status"})
-        code = status.get("status_code")
-        print(f"Video processing: {code}")
-        if code == "FINISHED":
+    # Meta sometimes fails to fetch or process a video it is pointed at (error 2207077),
+    # so a failed try is repeated, the second time uploading the file itself.
+    order = {"url": ["url"], "file": ["file"]}.get(UPLOAD, ["url", "file", "url"])
+    for attempt, how in enumerate(order, 1):
+        container = make_container(graph, post_token, ig_id, entry, how)
+        problem = wait_ready(graph, post_token, container)
+        if not problem:
             break
-        if code in ("ERROR", "EXPIRED"):
-            fail(f"Instagram could not process {entry['video']}: {status.get('status')}")
-        time.sleep(POLL_SECONDS)
+        print(f"::warning::Try {attempt} ({'link' if how == 'url' else 'file upload'}) failed: {problem}")
     else:
-        fail("Instagram took too long to process the video.")
+        fail(f"Instagram could not process {entry['video']} after {len(order)} tries: {problem}. The next run tries again.")
 
     if dry:
         print("Dry run OK: the Reel was prepared but not published.")

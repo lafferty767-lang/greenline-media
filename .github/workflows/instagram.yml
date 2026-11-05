@@ -15,6 +15,11 @@ on:
       post_date:
         description: "Schedule date to use (YYYY-MM-DD), blank for today"
         required: false
+      upload:
+        description: "How Instagram gets the video: auto (link, then file upload if that fails), url or file"
+        type: choice
+        options: [auto, url, file]
+        default: auto
 
 permissions:
   contents: write
@@ -37,6 +42,7 @@ jobs:
           POST_DATE: ${{ inputs.post_date }}
           POST_AT: "18:00"
           MAX_WAIT_HOURS: "5.5"
+          IG_UPLOAD: ${{ inputs.upload || 'auto' }}
           POST_NOW: ${{ github.event_name == 'workflow_dispatch' }}
         run: python3 poster/post_instagram.py
 
