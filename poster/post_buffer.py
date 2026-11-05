@@ -13,7 +13,8 @@ that time publishes right away. Later runs that day do nothing.
 Each schedule entry has a date, a video path, and a block for each network it
 should go to:
   "tiktok":   {"caption": "..."}
-  "youtube":  {"title": "...", "description": "..."}
+  "youtube":  {"title": "...", "description": "...", "video": "..."}  (video is optional,
+              for a YouTube-only version of the clip)
   "facebook": {"caption": "..."}  (posted as a Reel)
 A network with no channel connected in Buffer is skipped.
 
@@ -156,7 +157,7 @@ def build_input(net, entry, channel_id):
         "channelId": channel_id,
         "schedulingType": "automatic",
         "mode": "shareNow",
-        "assets": [{"video": {"url": f"{MEDIA}/{urllib.parse.quote(entry['video'])}"}}],
+        "assets": [{"video": {"url": f"{MEDIA}/{urllib.parse.quote(entry[net].get('video', entry['video']))}"}}],
     }
     if net == "tiktok":
         inp["text"] = entry["tiktok"]["caption"]

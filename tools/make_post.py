@@ -1,6 +1,10 @@
 """Turn 16:9 GREENLINE gameplay clips into 1080x1920 posts for TikTok, Reels and Shorts.
 
-Usage: python3 tools/make_post.py tools/posts.json CLIP_DIR OUT_DIR [id ...]
+Usage: python3 tools/make_post.py [--no-cta] tools/posts.json CLIP_DIR OUT_DIR [id ...]
+
+--no-cta leaves out the "BETA SIGNUPS OPEN / link in bio" banner. The YouTube
+versions use it: the Shorts are "made for kids", and YouTube recommends kids'
+videos that look like ads less.
 
 Each post in the JSON list has:
   id        output name, e.g. "07-rat-king" -> OUT_DIR/07-rat-king.mp4
@@ -79,8 +83,8 @@ def stripes(img, y):
     img.alpha_composite(st, (0, y))
 
 
-def frame_overlay(path, hook, mode):
-    """Logo, hook lines, hazard stripes around the video window, and the signup call to action."""
+def frame_overlay(path, hook, mode, cta=True):
+    """Logo, hook lines, hazard stripes around the video window, and (unless cta is False) the signup call to action."""
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     logo = Image.open(LOGO).convert("RGBA")
     lh = 150
@@ -93,9 +97,10 @@ def frame_overlay(path, hook, mode):
         y += 78
     stripes(img, top - 12)
     stripes(img, top + height)
-    cta = 1538 if mode == "crop" else 1480
-    text(img, cta, "BETA SIGNUPS OPEN", "Jersey15-Regular.ttf", 84, GREEN, (110, 255, 90, 220))
-    text(img, cta + 92, "link in bio  ·  @playgreenline", "Barlow-SemiBold.ttf", 44, (230, 236, 246))
+    if cta:
+        y = 1538 if mode == "crop" else 1480
+        text(img, y, "BETA SIGNUPS OPEN", "Jersey15-Regular.ttf", 84, GREEN, (110, 255, 90, 220))
+        text(img, y + 92, "link in bio  ·  @playgreenline", "Barlow-SemiBold.ttf", 44, (230, 236, 246))
     img.save(path)
 
 
@@ -141,14 +146,14 @@ def pan_expr(pan, x0):
     return f"{x0}*(1-(({k})*({k})*(3-2*({k}))))"
 
 
-def render(post, clip_dir, out_dir):
+def render(post, clip_dir, out_dir, cta=True):
     mode = post.get("mode", "crop")
     top, height = WINDOW[mode]
     src = os.path.join(clip_dir, post["src"])
     out = os.path.join(out_dir, post["id"] + ".mp4")
     with tempfile.TemporaryDirectory() as tmp:
         ov = os.path.join(tmp, "overlay.png")
-        frame_overlay(ov, post["hook"], mode)
+        frame_overlay(ov, post["hook"], mode, cta)
         inputs = ["-i", ov]
         caps = post.get("captions", [])
         for i, (a, b, s) in enumerate(caps):
@@ -194,12 +199,14 @@ def render(post, clip_dir, out_dir):
 
 
 def main():
-    spec, clip_dir, out_dir, *only = sys.argv[1:]
+    args = sys.argv[1:]
+    cta = "--no-cta" not in args
+    spec, clip_dir, out_dir, *only = [a for a in args if a != "--no-cta"]
     os.makedirs(out_dir, exist_ok=True)
     for post in json.load(open(spec)):
         if only and post["id"] not in only:
             continue
-        print("made", render(post, clip_dir, out_dir), flush=True)
+        print("made", render(post, clip_dir, out_dir, cta), flush=True)
 
 
 if __name__ == "__main__":
