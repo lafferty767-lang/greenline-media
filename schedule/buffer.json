@@ -38,9 +38,6 @@
     "youtube": {
       "title": "My zombie-proof rooftop hideout #shorts #indiegame",
       "description": "GREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. The Glo fuel leaked, the town turned into cube zombies, and you and up to 3 friends fight back. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
-    },
-    "facebook": {
-      "caption": "Home base in GREENLINE: a crate on a rooftop. Gun rack = armory, radio = story, side door = boss hunts 👀 Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame"
     }
   },
   {
@@ -49,9 +46,6 @@
     "youtube": {
       "title": "Glo-Land's boss has entered the chat 🎪 #shorts #bossfight",
       "description": "GREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. The Glo fuel leaked, the town turned into cube zombies, and you and up to 3 friends fight back. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
-    },
-    "facebook": {
-      "caption": "Welcome to Glo-Land. The carnival is closed. The boss is not 🎪💚 Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame"
     }
   },
   {
@@ -64,9 +58,6 @@
       "title": "Every map belongs to the same fuel company 👀 #shorts #indiegame",
       "description": "A flyover of the whole GREENLINE town: the Yard, Glo-Land, Greenline High, the Mega Mall and Greenline Tower.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
       "video": "videos/youtube/06-city-tour.mp4"
-    },
-    "facebook": {
-      "caption": "Quick flyover of the whole town 🏙️💚 The Yard, Glo-Land, Greenline High, the Suburbs, the Mega Mall and Greenline Tower: every stop is a Greenline site. Which map would you play first? Beta signups: link on our Page. #indiegame #gamedev #zombiegame #mobilegame #voxelart"
     }
   },
   {
@@ -74,14 +65,6 @@
     "video": "videos/07-rat-king.mp4",
     "tiktok": {
       "caption": "He used to inspect the sewers. Now he runs them 🐀 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
-    },
-    "youtube": {
-      "title": "He used to inspect the sewers. Now he runs them 🐀 #shorts #bossfight",
-      "description": "Down in the Sewers, a Greenline sewer inspector became the Rat King.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/07-rat-king.mp4"
-    },
-    "facebook": {
-      "caption": "Greenline sent him down to check the pipes. Now the rats answer to him 🐀💚 Long live the Rat King, boss of the Sewers. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
@@ -89,147 +72,362 @@
     "video": "videos/08-demolitionist.mp4",
     "tiktok": {
       "caption": "Saving up for this one 💥 60 gems, all earned in game. Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #satisfying"
+    }
+  },
+  {
+    "date": "2026-11-06",
+    "video": "videos/18-guess-rat-king.mp4",
+    "tiktok": {
+      "caption": "Guess the boss #1 👀 did you get it before the reveal? Beta signups: link on our IG @playgreenline2026 #guesstheboss #gaming #indiegame #mobilegame #zombies"
     },
+    "youtube": {
+      "title": "Guess the boss #1 👀 #shorts #gaming",
+      "description": "Can you name this GREENLINE boss before the countdown ends? Hint: he lives under the city. It's the Rat King, boss of the Sewers.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Guess the boss #1: name him before the pixels clear 👀 Did you get it? Beta signups: link on our Page. #guesstheboss #indiegame #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-07",
+    "video": "videos/19-ice-cream-or-mall-cop.mp4",
+    "tiktok": {
+      "caption": "Ice Cream Man or Mall Cop? 1 or 2 👇 Beta signups: link on our IG @playgreenline2026 #thisorthat #bossfight #gaming #indiegame #zombies"
+    },
+    "youtube": {
+      "title": "Ice Cream Man or Mall Cop: who would you fight? 🍦🚨 #shorts #gaming",
+      "description": "Two GREENLINE bosses, one choice. The Ice Cream Man runs the Suburbs. The Mall Cop guards the Mega Mall.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Ice Cream Man or Mall Cop: who are you taking on? 🍦🚨 Comment 1 or 2 👇 Beta signups: link on our Page. #thisorthat #bossfight #indiegame #zombiegame"
+    }
+  },
+  {
+    "date": "2026-11-08",
+    "video": "videos/20-boss-tier-list.mp4",
+    "tiktok": {
+      "caption": "Ranking every GREENLINE boss 💥 who's too low? Beta signups: link on our IG @playgreenline2026 #tierlist #gaming #bossfight #indiegame #zombies"
+    },
+    "youtube": {
+      "title": "GREENLINE boss tier list 💥 #shorts #gaming",
+      "description": "Eight bosses ranked by how hard they hit, from the Foreman at the Yard to the Scrap Titan in the Glo Reactor.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Our GREENLINE boss tier list, ranked by how hard they hit 💥 Who did we put too low? Beta signups: link on our Page. #tierlist #bossfight #indiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-09",
+    "video": "videos/21-wait-for-the-last-one.mp4",
+    "tiktok": {
+      "caption": "Wait for the last one 💥 Beta signups: link on our IG @playgreenline2026 #satisfying #gaming #indiegame #zombies #mobilegame"
+    },
+    "youtube": {
+      "title": "Wait for the last one 💥 #shorts #gaming #satisfying",
+      "description": "Five GREENLINE explosions in a row, with the biggest one saved for last.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Wait for the last one 💥 Five explosions, one combo. Beta signups: link on our Page. #satisfying #indiegame #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-10",
+    "video": "videos/22-guess-scrap-titan.mp4",
+    "tiktok": {
+      "caption": "Guess the boss #2 👀 did you get it before the reveal? Beta signups: link on our IG @playgreenline2026 #guesstheboss #gaming #indiegame #mobilegame #zombies"
+    },
+    "youtube": {
+      "title": "Guess the boss #2 👀 #shorts #gaming",
+      "description": "Can you name this GREENLINE boss before the countdown ends? Hint: the reactor built him. It's the Scrap Titan, boss of the Glo Reactor.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Guess the boss #2: name him before the pixels clear 👀 Did you get it? Beta signups: link on our Page. #guesstheboss #indiegame #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-11",
+    "video": "videos/23-rat-king-or-dr-verde.mp4",
+    "tiktok": {
+      "caption": "Rat King or Dr. Verde? 1 or 2 👇 Beta signups: link on our IG @playgreenline2026 #thisorthat #bossfight #gaming #indiegame #zombies"
+    },
+    "youtube": {
+      "title": "Rat King or Dr. Verde: who would you fight? 🐀🧪 #shorts #gaming",
+      "description": "Two GREENLINE bosses, one choice. The Rat King rules the Sewers. Dr. Verde runs the Research Lab, where the Glo was made.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Rat King or Dr. Verde: who are you taking on? 🐀🧪 Comment 1 or 2 👇 Beta signups: link on our Page. #thisorthat #bossfight #indiegame #zombiegame"
+    }
+  },
+  {
+    "date": "2026-11-12",
+    "video": "videos/24-guess-mall-cop.mp4",
+    "tiktok": {
+      "caption": "Guess the boss #3 👀 did you get it before the reveal? Beta signups: link on our IG @playgreenline2026 #guesstheboss #gaming #indiegame #mobilegame #zombies"
+    },
+    "youtube": {
+      "title": "Guess the boss #3 👀 #shorts #gaming",
+      "description": "Can you name this GREENLINE boss before the countdown ends? Hint: the mall is closed. It's the Mall Cop, boss of the Mega Mall.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Guess the boss #3: name him before the pixels clear 👀 Did you get it? Beta signups: link on our Page. #guesstheboss #indiegame #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-13",
+    "video": "videos/09-ice-cream-man.mp4",
+    "tiktok": {
+      "caption": "This ice cream comes with a boss fight 🍦 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-13",
+    "video": "videos/07-rat-king.mp4",
+    "youtube": {
+      "title": "He used to inspect the sewers. Now he runs them 🐀 #shorts #bossfight",
+      "description": "Down in the Sewers, a Greenline sewer inspector became the Rat King.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/07-rat-king.mp4"
+    }
+  },
+  {
+    "date": "2026-11-13",
+    "video": "videos/04-hideout.mp4",
+    "facebook": {
+      "caption": "Home base in GREENLINE: a crate on a rooftop. Gun rack = armory, radio = story, side door = boss hunts 👀 Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame"
+    }
+  },
+  {
+    "date": "2026-11-14",
+    "video": "videos/10-eleven-kills.mp4",
+    "tiktok": {
+      "caption": "Count them. Did you get 11? 🎯 Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #satisfying"
+    }
+  },
+  {
+    "date": "2026-11-14",
+    "video": "videos/08-demolitionist.mp4",
     "youtube": {
       "title": "Is the Demolitionist worth 60 gems? 💥 #shorts #gaming",
       "description": "The Demolitionist class clears a whole crowd with one grenade. Gems are earned by playing.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
       "video": "videos/youtube/08-demolitionist.mp4"
-    },
+    }
+  },
+  {
+    "date": "2026-11-14",
+    "video": "videos/05-globro-boss.mp4",
+    "facebook": {
+      "caption": "Welcome to Glo-Land. The carnival is closed. The boss is not 🎪💚 Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "video": "videos/11-coach.mp4",
+    "tiktok": {
+      "caption": "Coach never left the field 📣 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "video": "videos/09-ice-cream-man.mp4",
+    "youtube": {
+      "title": "This ice cream comes with a boss fight 🍦 #shorts #bossfight",
+      "description": "In the Suburbs, Greenline's ice cream man is waiting with a glowing cone.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/09-ice-cream-man.mp4"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "video": "videos/06-city-tour.mp4",
+    "facebook": {
+      "caption": "Quick flyover of the whole town 🏙️💚 The Yard, Glo-Land, Greenline High, the Suburbs, the Mega Mall and Greenline Tower: every stop is a Greenline site. Which map would you play first? Beta signups: link on our Page. #indiegame #gamedev #zombiegame #mobilegame #voxelart"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "video": "videos/12-armory.mp4",
+    "tiktok": {
+      "caption": "Rat-A-Tat or Beaker Blaster? Which one are you taking? ✨ Beta signups: link on our IG @playgreenline2026 #indiegame #gamedev #gameui #mobilegame #zombies"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "video": "videos/10-eleven-kills.mp4",
+    "youtube": {
+      "title": "11 zombies down in under 10 seconds 🎯 #shorts #gaming",
+      "description": "In GREENLINE your gun auto-fires, so on a phone you just aim.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/10-eleven-kills.mp4"
+    }
+  },
+  {
+    "date": "2026-11-16",
+    "video": "videos/07-rat-king.mp4",
+    "facebook": {
+      "caption": "Greenline sent him down to check the pipes. Now the rats answer to him 🐀💚 Long live the Rat King, boss of the Sewers. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "video": "videos/13-mall-cop.mp4",
+    "tiktok": {
+      "caption": "Mall security just got a Glo upgrade 🛒 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "video": "videos/11-coach.mp4",
+    "youtube": {
+      "title": "Coach never left the field 📣 #shorts #bossfight",
+      "description": "The school map's boss is Greenline High's own coach, glowing whistle included.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/11-coach.mp4"
+    }
+  },
+  {
+    "date": "2026-11-17",
+    "video": "videos/08-demolitionist.mp4",
     "facebook": {
       "caption": "Earn 60 gems by playing and the Demolitionist is yours 💥 Worth it? Beta signups: link on our Page. #indiegame #zombiegame #gamedev #mobilegame #satisfying"
     }
   },
   {
-    "date": "2026-11-06",
-    "video": "videos/09-ice-cream-man.mp4",
+    "date": "2026-11-18",
+    "video": "videos/14-rooftop-hatch.mp4",
     "tiktok": {
-      "caption": "This ice cream comes with a boss fight 🍦 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
-    },
+      "caption": "One tap and you're down the hatch 🪜 Should every game start like this? Beta signups: link on our IG @playgreenline2026 #indiegame #gamedev #gameui #mobilegame #zombies"
+    }
+  },
+  {
+    "date": "2026-11-18",
+    "video": "videos/12-armory.mp4",
     "youtube": {
-      "title": "This ice cream comes with a boss fight 🍦 #shorts #bossfight",
-      "description": "In the Suburbs, Greenline's ice cream man is waiting with a glowing cone.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/09-ice-cream-man.mp4"
-    },
+      "title": "Rat-A-Tat or Beaker Blaster? ✨ #shorts #indiegame",
+      "description": "The GREENLINE armory: pick a gun, then pick its skin.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/12-armory.mp4"
+    }
+  },
+  {
+    "date": "2026-11-18",
+    "video": "videos/09-ice-cream-man.mp4",
     "facebook": {
       "caption": "Brain freeze, Greenline style 🍦💚 The Ice Cream Man's Glo cone is NOT for eating. Find him in the Suburbs. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-07",
-    "video": "videos/10-eleven-kills.mp4",
+    "date": "2026-11-19",
+    "video": "videos/15-dr-verde.mp4",
     "tiktok": {
-      "caption": "Count them. Did you get 11? 🎯 Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #satisfying"
-    },
+      "caption": "She invented the stuff that started all this 🧪 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-19",
+    "video": "videos/13-mall-cop.mp4",
     "youtube": {
-      "title": "11 zombies down in under 10 seconds 🎯 #shorts #gaming",
-      "description": "In GREENLINE your gun auto-fires, so on a phone you just aim.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/10-eleven-kills.mp4"
-    },
+      "title": "Mall security just got a Glo upgrade 🛒 #shorts #bossfight",
+      "description": "The Mall Cop guards the Mega Mall, one of four Act 2 maps in GREENLINE.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/13-mall-cop.mp4"
+    }
+  },
+  {
+    "date": "2026-11-19",
+    "video": "videos/10-eleven-kills.mp4",
     "facebook": {
       "caption": "Your gun auto-fires and aim assist has your back 🎯 Did you count all 11? Beta signups: link on our Page. #indiegame #zombiegame #gamedev #mobilegame #satisfying"
     }
   },
   {
-    "date": "2026-11-08",
-    "video": "videos/11-coach.mp4",
+    "date": "2026-11-20",
+    "video": "videos/16-shockwave.mp4",
     "tiktok": {
-      "caption": "Coach never left the field 📣 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
-    },
+      "caption": "Would you have dodged that? 🟠 Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #gamedev"
+    }
+  },
+  {
+    "date": "2026-11-20",
+    "video": "videos/14-rooftop-hatch.mp4",
     "youtube": {
-      "title": "Coach never left the field 📣 #shorts #bossfight",
-      "description": "The school map's boss is Greenline High's own coach, glowing whistle included.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/11-coach.mp4"
-    },
+      "title": "One tap and you're down the hatch 🪜 #shorts #indiegame",
+      "description": "From the GREENLINE title screen straight down the hatch into your hideout.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/14-rooftop-hatch.mp4"
+    }
+  },
+  {
+    "date": "2026-11-20",
+    "video": "videos/11-coach.mp4",
     "facebook": {
       "caption": "Greenline High's coach never left the field 📣💚 Shoot the Glo whistle to end the game. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-09",
-    "video": "videos/12-armory.mp4",
+    "date": "2026-11-21",
+    "video": "videos/17-scrap-titan.mp4",
     "tiktok": {
-      "caption": "Rat-A-Tat or Beaker Blaster? Which one are you taking? ✨ Beta signups: link on our IG @playgreenline2026 #indiegame #gamedev #gameui #mobilegame #zombies"
-    },
+      "caption": "Built from spare parts and powered by Glo ⚙️ Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-21",
+    "video": "videos/15-dr-verde.mp4",
     "youtube": {
-      "title": "Rat-A-Tat or Beaker Blaster? ✨ #shorts #indiegame",
-      "description": "The GREENLINE armory: pick a gun, then pick its skin.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/12-armory.mp4"
-    },
+      "title": "Dr. Verde invented the Glo. It did not go well 🧪 #shorts #bossfight",
+      "description": "Act 3 starts in the Research Lab, where the scientist who made the Glo is now the boss.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/15-dr-verde.mp4"
+    }
+  },
+  {
+    "date": "2026-11-21",
+    "video": "videos/12-armory.mp4",
     "facebook": {
       "caption": "Rat-A-Tat or Beaker Blaster? ✨ Then the hard part: Ice Age, Gold, Jungle Ghost or Glo-Proof? Tell us your combo. Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-10",
-    "video": "videos/13-mall-cop.mp4",
-    "tiktok": {
-      "caption": "Mall security just got a Glo upgrade 🛒 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
-    },
+    "date": "2026-11-22",
+    "video": "videos/16-shockwave.mp4",
     "youtube": {
-      "title": "Mall security just got a Glo upgrade 🛒 #shorts #bossfight",
-      "description": "The Mall Cop guards the Mega Mall, one of four Act 2 maps in GREENLINE.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/13-mall-cop.mp4"
-    },
+      "title": "Would you have dodged that shockwave? 🟠 #shorts #gaming",
+      "description": "Some zombies at the Glo Reactor slam a shockwave. The orange ring shows where it hits.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/16-shockwave.mp4"
+    }
+  },
+  {
+    "date": "2026-11-22",
+    "video": "videos/13-mall-cop.mp4",
     "facebook": {
       "caption": "The Mall Cop takes mall security VERY seriously 🛒💚 The Mega Mall is his turf now. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-11",
-    "video": "videos/14-rooftop-hatch.mp4",
-    "tiktok": {
-      "caption": "One tap and you're down the hatch 🪜 Should every game start like this? Beta signups: link on our IG @playgreenline2026 #indiegame #gamedev #gameui #mobilegame #zombies"
-    },
+    "date": "2026-11-23",
+    "video": "videos/17-scrap-titan.mp4",
     "youtube": {
-      "title": "One tap and you're down the hatch 🪜 #shorts #indiegame",
-      "description": "From the GREENLINE title screen straight down the hatch into your hideout.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/14-rooftop-hatch.mp4"
-    },
+      "title": "Built from spare parts, powered by Glo ⚙️ #shorts #bossfight",
+      "description": "The Scrap Titan guards the Glo Reactor in Act 3, the last stop before Greenline Tower.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
+      "video": "videos/youtube/17-scrap-titan.mp4"
+    }
+  },
+  {
+    "date": "2026-11-23",
+    "video": "videos/14-rooftop-hatch.mp4",
     "facebook": {
       "caption": "Our title screen is also the front door 🪜💚 One tap and you're climbing down into the hideout. Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-12",
+    "date": "2026-11-24",
     "video": "videos/15-dr-verde.mp4",
-    "tiktok": {
-      "caption": "She invented the stuff that started all this 🧪 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
-    },
-    "youtube": {
-      "title": "Dr. Verde invented the Glo. It did not go well 🧪 #shorts #bossfight",
-      "description": "Act 3 starts in the Research Lab, where the scientist who made the Glo is now the boss.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/15-dr-verde.mp4"
-    },
     "facebook": {
       "caption": "The scientist behind the Glo couldn't escape it either 🧪💚 Dr. Verde is waiting in the Research Lab, bubble shield and all. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-13",
+    "date": "2026-11-25",
     "video": "videos/16-shockwave.mp4",
-    "tiktok": {
-      "caption": "Would you have dodged that? 🟠 Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #gamedev"
-    },
-    "youtube": {
-      "title": "Would you have dodged that shockwave? 🟠 #shorts #gaming",
-      "description": "Some zombies at the Glo Reactor slam a shockwave. The orange ring shows where it hits.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/16-shockwave.mp4"
-    },
     "facebook": {
       "caption": "Some zombies don't just walk at you. They slam the ground 🟠 Reading that warning ring is how you last at the Glo Reactor. Beta signups: link on our Page. #indiegame #zombiegame #gamedev #mobilegame #gaming"
     }
   },
   {
-    "date": "2026-11-14",
+    "date": "2026-11-26",
     "video": "videos/17-scrap-titan.mp4",
-    "tiktok": {
-      "caption": "Built from spare parts and powered by Glo ⚙️ Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
-    },
-    "youtube": {
-      "title": "Built from spare parts, powered by Glo ⚙️ #shorts #bossfight",
-      "description": "The Scrap Titan guards the Glo Reactor in Act 3, the last stop before Greenline Tower.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame",
-      "video": "videos/youtube/17-scrap-titan.mp4"
-    },
     "facebook": {
       "caption": "Spare parts, wrapped around a Glo core ⚙️💚 The Scrap Titan guards the Glo Reactor, the last stop before Greenline Tower. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
