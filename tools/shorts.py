@@ -198,11 +198,11 @@ def fps_of(path):
 class Clip:
     """Frames of a clip between t0 and t1 (clip seconds), cropped to box=(x, y, w, h) and scaled to size."""
 
-    def __init__(self, src, t0, t1, box, size):
+    def __init__(self, src, t0, t1, box, size, fps=None):
         path = os.path.join(ROOT, src)
-        self.fps = fps_of(path)
+        self.fps = fps or fps_of(path)
         x, y, w, h = box
-        vf = f"crop={w}:{h}:{x}:{y},scale={size[0]}:{size[1]}:flags=lanczos"
+        vf = f"crop={w}:{h}:{x}:{y},scale={size[0]}:{size[1]}:flags=lanczos" + (f",fps={fps}" if fps else "")
         raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-ss", f"{t0:.3f}", "-t", f"{t1 - t0:.3f}", "-i", path,
                               "-vf", vf, "-an", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
                              capture_output=True, check=True).stdout
@@ -244,7 +244,7 @@ def render(out, seconds, draw, audio):
         sound.write_wav(wav, audio / max(1.0, peak / 0.9))
         p = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                               "-r", str(FPS), "-i", "-", "-i", wav, "-c:v", "libx264", "-preset", "medium", "-crf", "19",
-                              "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-af", "loudnorm=I=-14:TP=-1.5,alimiter=limit=0.84:level=false",
+                              "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-af", "loudnorm=I=-14:TP=-1.5,aresample=48000,alimiter=limit=0.8:attack=2:release=60:level=false", "-ar", "48000",
                               "-shortest", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
         for i in range(n):
             p.stdin.write(draw(i / FPS).convert("RGB").tobytes())
@@ -524,6 +524,97 @@ def satisfying(segments, out, hook=("WAIT FOR", "THE LAST ONE")):
     return render(out, T, draw, sound.mix(T, parts))
 
 
+def music_audio(path, t0, dur):
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-ss", f"{t0:.3f}", "-t", f"{dur:.3f}", "-i", os.path.join(ROOT, path),
+                          "-af", f"aresample={sound.SR}", "-ac", "2", "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, np.float32).reshape(-1, 2)
+
+
+def faded(x, ms=12):
+    n = min(len(x) // 2, int(sound.SR * ms / 1000))
+    if n:
+        x = x.copy()
+        ramp = np.linspace(0, 1, n, dtype=np.float32)[:, None]
+        x[:n] *= ramp
+        x[-n:] *= ramp[::-1]
+    return x
+
+
+def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None):
+    """Vertical 1080x1920 clips played back to back (the Mac's v3 clips).
+
+    segs: [dict(src, s0, length, punch=False, flash=False, badge=None)], each played from clip time s0.
+    hook: text lines shown on a dark plate centred at hook_y for the whole video.
+    music: (wav path, start s) played under everything; clip_gain sets the clips' own sound.
+    ask: text that pops over the hook for the last 2 s (e.g. "COMMENT 1-8")."""
+    T = sum(sg["length"] for sg in segs)
+    starts = np.cumsum([0] + [sg["length"] for sg in segs])[:-1]
+    lines = [label(txt, size, col, glow=GLOW_G if col == GREEN else None) for txt, size, col in hook]
+    ask_spr = label(ask, 76, GREEN, glow=GLOW_G) if ask else None
+    badges = {i: label(sg["badge"], 120, WHITE, glow=GLOW_G) for i, sg in enumerate(segs) if sg.get("badge")}
+    cache = {}
+
+    def frames_for(i):
+        if i not in cache:
+            cache.clear()  # keep one segment in memory
+            sg = segs[i]
+            cache[i] = Clip(sg["src"], sg["s0"], sg["s0"] + sg["length"] + 0.1, (0, 0, 1080, 1920), (W, H), fps=FPS)
+        return cache[i]
+
+    hook_h = sum(sp.height - 60 for sp in lines)
+
+    def draw(t):
+        i = int(np.searchsorted(starts, t, side="right") - 1)
+        sg, t0 = segs[i], starts[i]
+        img = frames_for(i).at(t - t0)
+        if sg.get("punch"):
+            img = punch(img, 1 + 0.08 * decay(t, t0, 0.3))
+        c = flash(img, 0.8 * decay(t, t0, 0.2)) if sg.get("flash") else img
+        if lines:
+            y = hook_y - hook_h / 2
+            plate = Image.new("RGBA", (W, H))
+            ImageDraw.Draw(plate).rounded_rectangle((60, y - 26, W - 60, y + hook_h + 26), radius=26, fill=(6, 10, 14, 175))
+            c.alpha_composite(plate)
+            for k, sp in enumerate(lines):
+                h = sp.height - 60
+                put(c, sp, W / 2, y + h / 2, pop(t, 0.05 * k, 0.18) if t > 0 else 0.9)
+                y += h
+        if i in badges:
+            put(c, badges[i], 120, 470, pop(t, t0, 0.2) if t > 0 else 1.0)
+        if ask_spr is not None and t > T - 2.0:
+            put(c, ask_spr, W / 2, hook_y - hook_h / 2 - 90, pop(t, T - 2.0))
+        return c
+
+    parts = []
+    if music:
+        parts.append((0, music_audio(music[0], music[1], T), 1.0))
+    if clip_gain:
+        for sg, t0 in zip(segs, starts):
+            parts.append((t0, faded(clip_audio(sg["src"], sg["s0"], sg["length"])), clip_gain))
+    for sg, t0 in zip(segs, starts):
+        if sg.get("flash"):
+            parts.append((t0, sfx("whoosh"), 0.35))
+    audio = sound.mix(T, parts)
+    return render(out, T, draw, audio)
+
+
+V3 = "greenline_v3_9x16_{}.mp4"
+DISCO = "greenline_music_disco_125_a.wav"  # 125 BPM, first beat at 0.02 s; the disco clips start in sync with it
+BAR = 4 * 60 / 125
+
+
+def dance_off(out):
+    """All 8 bosses, one bar each. Each boss's clip time is chosen so its dance stays on the beat of the music."""
+    segs = []
+    for k in range(8):
+        base = 4.0 * (k % 4)
+        t_out = k * BAR
+        x = (t_out - base) % (BAR / 4)
+        x = x + BAR / 4 if x < 0.3 else x  # skip the name card's first frames
+        segs.append(dict(src=V3.format("disco_bossoff_" + "ab"[k // 4]), s0=base + x, length=BAR, punch=True, badge=str(k + 1)))
+    return montage(out, segs, hook=[("WHO DANCES BEST?", 84, WHITE)], music=(DISCO, 0.0), clip_gain=0, ask="PICK 1 TO 8")
+
+
 # ---------------------------------------------------------------- the videos
 
 SHORTS = {
@@ -542,6 +633,33 @@ SHORTS = {
     "22-guess-scrap-titan": lambda o: guess_boss("scrap-titan", o),
     "23-rat-king-or-dr-verde": lambda o: this_or_that("rat-king", "dr-verde", o),
     "24-guess-mall-cop": lambda o: guess_boss("mall-cop", o),
+    # from the Mac's v3 clips (drafts until Logan approves them)
+    "25-glo-disco": lambda o: montage(o, [
+        dict(src=V3.format("disco_close_1"), s0=0.0, length=BAR),
+        dict(src=V3.format("disco_close_2"), s0=BAR, length=BAR / 2, punch=True),
+        dict(src=V3.format("disco_close_3"), s0=1.5 * BAR, length=BAR / 2, punch=True),
+        dict(src=V3.format("disco_party"), s0=2 * BAR, length=BAR),
+        dict(src=V3.format("disco_party"), s0=3 * BAR, length=BAR, punch=True),
+        dict(src=V3.format("disco_party"), s0=4 * BAR, length=BAR),
+    ], hook=[("WHEN THE ZOMBIES", 84, WHITE), ("FIND THE DISCO", 84, GREEN)], hook_y=330, music=(DISCO, 0.0), clip_gain=0),
+    "26-boss-dance-off": dance_off,
+    "27-noob-pro-hacker": lambda o: montage(o, [
+        dict(src=V3.format("noob_pro_hacker"), s0=0.2, length=1.0),
+        dict(src=V3.format("noob_pro_hacker"), s0=4.4, length=2.0),
+        dict(src=V3.format("noob_pro_hacker"), s0=7.2, length=3.2, flash=True),
+        dict(src=V3.format("noob_pro_hacker"), s0=13.6, length=4.8, flash=True),
+    ], hook=[("WHICH ONE ARE YOU?", 80, WHITE)]),
+    "28-bloopers": lambda o: montage(o, [
+        dict(src=V3.format("bloopers"), s0=0.4, length=2.4),
+        dict(src=V3.format("bloopers"), s0=5.0, length=2.4, flash=True),
+        dict(src=V3.format("bloopers"), s0=8.6, length=2.4, flash=True),
+        dict(src=V3.format("bloopers"), s0=13.0, length=2.6, flash=True),
+        dict(src=V3.format("bloopers"), s0=16.2, length=1.8, flash=True),
+    ], hook=[("BUGS WE FOUND", 80, WHITE), ("MAKING OUR GAME", 80, GREEN)]),
+    "29-before-now": lambda o: montage(o, [
+        dict(src=V3.format("before_now"), s0=0.0, length=1.6),
+        dict(src=V3.format("before_now"), s0=5.0, length=5.4, flash=True, punch=True),
+    ], hook=[("OUR GAME,", 80, WHITE), ("ONE MONTH APART", 80, GREEN)]),
 }
 
 
