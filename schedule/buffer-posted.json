@@ -119,8 +119,9 @@
     "video": "videos/18-guess-rat-king.mp4",
     "posted_on": "2026-11-06",
     "post_id": "6aedf7ce76f34a82727952ad",
-    "status": "scheduled",
-    "due_at": "2026-11-07T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-07T02:00:00+00:00",
+    "link": "https://www.tiktok.com/@playgreenline/video/7705243601617407246?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
   },
   {
     "network": "youtube",
@@ -128,8 +129,9 @@
     "video": "videos/18-guess-rat-king.mp4",
     "posted_on": "2026-11-06",
     "post_id": "6aedf7ced5d84bbdff037d07",
-    "status": "scheduled",
-    "due_at": "2026-11-07T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-07T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/Vgr6a-YKHJw"
   },
   {
     "network": "facebook",
@@ -137,7 +139,35 @@
     "video": "videos/18-guess-rat-king.mp4",
     "posted_on": "2026-11-06",
     "post_id": "6aedf7cf38465bae5d7f9267",
+    "status": "sent",
+    "due_at": "2026-11-07T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/2198844031034422/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-07",
+    "video": "videos/19-ice-cream-or-mall-cop.mp4",
+    "posted_on": "2026-11-07",
+    "post_id": "6aeee3b5004e4879a74303d8",
     "status": "scheduled",
-    "due_at": "2026-11-07T02:00:00+00:00"
+    "due_at": "2026-11-08T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-07",
+    "video": "videos/19-ice-cream-or-mall-cop.mp4",
+    "posted_on": "2026-11-07",
+    "post_id": "6aeee3b5a7751de7c9d66f66",
+    "status": "scheduled",
+    "due_at": "2026-11-08T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-07",
+    "video": "videos/19-ice-cream-or-mall-cop.mp4",
+    "posted_on": "2026-11-07",
+    "post_id": "6aeee3b6229bf05daf39d6e6",
+    "status": "scheduled",
+    "due_at": "2026-11-08T02:00:00+00:00"
   }
 ]
