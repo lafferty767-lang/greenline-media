@@ -9,6 +9,9 @@ Formats (SHORTS at the bottom lists the videos):
   this_or_that  two bosses stacked top and bottom: who would you fight?
   tier_list     each boss's intro card, then its badge photo drops into an S to D tier board
   satisfying    an explosion combo cut to the beat, with slow motion on the last one
+  montage       vertical clips back to back with a hook plate (dance party, race, bug + question)
+  screenshot_boss  the 8 bosses flick past in a small frame: screenshot to get yours
+  secret_room   the rooftop hatch opens and the hideout is the reveal
 
 Every video loops: the last frames lead back into the first one. Music and sound
 effects come from tools/sound.py (made from scratch, no samples). There is no signup
@@ -540,12 +543,13 @@ def faded(x, ms=12):
     return x
 
 
-def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None):
+def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None, beat=None):
     """Vertical 1080x1920 clips played back to back (the Mac's v3 clips).
 
     segs: [dict(src, s0, length, punch=False, flash=False, badge=None)], each played from clip time s0.
     hook: text lines shown on a dark plate centred at hook_y for the whole video.
     music: (wav path, start s) played under everything; clip_gain sets the clips' own sound.
+    beat: (style, gain) adds a beat from tools/sound.py instead of a music file.
     ask: text that pops over the hook for the last 2 s (e.g. "COMMENT 1-8")."""
     T = sum(sg["length"] for sg in segs)
     starts = np.cumsum([0] + [sg["length"] for sg in segs])[:-1]
@@ -588,6 +592,8 @@ def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None
     parts = []
     if music:
         parts.append((0, music_audio(music[0], music[1], T), 1.0))
+    if beat:
+        parts.append((0, sound.beat(T, style=beat[0]), beat[1]))
     if clip_gain:
         for sg, t0 in zip(segs, starts):
             parts.append((t0, faded(clip_audio(sg["src"], sg["s0"], sg["length"])), clip_gain))
@@ -613,6 +619,92 @@ def dance_off(out):
         x = x + BAR / 4 if x < 0.3 else x  # skip the name card's first frames
         segs.append(dict(src=V3.format("disco_bossoff_" + "ab"[k // 4]), s0=base + x, length=BAR, punch=True, badge=str(k + 1)))
     return montage(out, segs, hook=[("WHO DANCES BEST?", 84, WHITE)], music=(DISCO, 0.0), clip_gain=0, ask="PICK 1 TO 8")
+
+
+def screenshot_boss(out):
+    """The 8 bosses flick past in a small frame: screenshot to see which one you get.
+
+    Only the small frame changes and every boss picture is set to the same brightness,
+    so the fast flicking never flashes the whole screen."""
+    T, HOLD, SIZE, TOP = 8.0, 4, 660, 690
+    keys = list(BOSSES)
+    pics = []
+    for k in keys:
+        b = BOSSES[k]
+        im = Clip(b["src"], b["card"] + 0.1, b["card"] + 0.4, (b["cx"] - 420, 120, 840, 840), (SIZE, SIZE)).at(0)
+        pics.append(np.asarray(im.convert("RGB"), np.float32))
+    target = float(np.mean([p.mean() for p in pics]))
+    gains = [min(1.3, max(0.8, target / p.mean())) for p in pics]
+    pics = [Image.fromarray(np.clip(p * g, 0, 255).astype(np.uint8)).convert("RGBA") for p, g in zip(pics, gains)]
+    names = [label(BOSSES[k]["name"], 76, RED, glow=GLOW_R, max_w=W - 160) for k in keys]
+    rng = np.random.default_rng(3)
+    order = []
+    while len(order) < round(T * FPS) // HOLD:
+        perm = [int(v) for v in rng.permutation(len(keys))]
+        if order and perm[0] == order[-1]:
+            perm.reverse()
+        order += perm
+    bg = backdrop(pics[-1], 0.3)
+    title = label("SCREENSHOT", 124, WHITE, glow=GLOW_G)
+    sub = label("TO GET YOUR BOSS", 84, GREEN, glow=GLOW_G)
+    ask = label("WHO DID YOU GET?", 72, WHITE, name="Rubik.ttf", weight="Black")
+    x0 = (W - SIZE) // 2
+
+    def draw(t):
+        k = order[min(len(order) - 1, int(t * FPS + 0.5) // HOLD)]
+        c = bg.copy()
+        c.alpha_composite(pics[k], (x0, TOP))
+        frame_box(c, x0, TOP, SIZE, SIZE)
+        put(c, title, W / 2, 400, pop(t, 0, 0.18) if t > 0 else 0.9)
+        put(c, sub, W / 2, 540, pop(t, 0.08, 0.18) if t > 0 else 0.9)
+        put(c, names[k], W / 2, TOP + SIZE + 100)
+        put(c, ask, W / 2, TOP + SIZE + 250, 1 + 0.05 * decay(t, int(t / BEAT) * BEAT, 0.2))
+        c.alpha_composite(logo(84), (W // 2 - logo(84).width // 2, 190))
+        return c
+
+    return render(out, T, draw, sound.mix(T, [(0, sound.beat(T, style="hype"), 0.9)]))
+
+
+def secret_room(out):
+    """The rooftop hatch: it opens, the survivor climbs down, and the hideout is the reveal."""
+    src = "social/clips/15_hatch_climb.mp4"
+    sq = (420, 0, 1080, 1080)
+    cuts = [(2.4, 3.0, sq), (7.0, 0.6, sq), (8.6, 0.6, sq), (9.55, 2.3, (545, 110, 830, 830))]
+    clips = [Clip(src, s0, s0 + d + 0.1, box, (WIN, WIN), fps=FPS) for s0, d, box in cuts]
+    starts = [float(v) for v in np.cumsum([0] + [d for _, d, _ in cuts])[:-1]]
+    T, R = sum(d for _, d, _ in cuts), starts[-1]
+    line1 = label("THERE'S A SECRET ROOM", 78, WHITE, glow=GLOW_G)
+    line2 = label("UNDER THIS HATCH", 78, GREEN, glow=GLOW_G)
+    ask = label("What's down there?", 64, WHITE, name="Rubik.ttf", weight="Black")
+    name = label("THE HIDEOUT", 110, GREEN, glow=GLOW_G)
+    job = label("Your base between missions", 60, WHITE, name="Rubik.ttf", weight="Black")
+
+    def draw(t):
+        i = max(k for k, s0 in enumerate(starts) if t >= s0 - 1e-6)
+        win = clips[i].at(t - starts[i])
+        if i:
+            win = punch(win, 1 + (0.14 if i == len(cuts) - 1 else 0.06) * decay(t, starts[i], 0.3))
+        c = backdrop(win)
+        c.alpha_composite(win, (0, WIN_Y))
+        frame_box(c, 0, WIN_Y, WIN, WIN)
+        c.alpha_composite(logo(76), (24, WIN_Y + 22))
+        if t < R:
+            put(c, line1, W / 2, 170, pop(t, 0, 0.18) if t > 0 else 0.9)
+            put(c, line2, W / 2, 278, pop(t, 0.08, 0.18) if t > 0 else 0.9)
+            put(c, ask, W / 2, WIN_Y + WIN + 96, pop(t, 0.8))
+            bar = int(W * (1 - t / R))
+            ImageDraw.Draw(c).rectangle((0, WIN_Y + WIN + 8, bar, WIN_Y + WIN + 26), fill=GREEN)
+        else:
+            c = flash(c, 1.0 * decay(t, R, 0.35))
+            put(c, name, W / 2, 232, pop(t, R, 0.25))
+            put(c, job, W / 2, WIN_Y + WIN + 96, pop(t, R + 0.25))
+        return c
+
+    parts = [(0, sound.beat(T, drop=R, style="quiz"), 0.9), (R - 1.0, sfx("riser"), 0.45), (R, sfx("impact"), 0.9),
+             (R, sfx("reveal"), 0.55), (1.3, sfx("thunk"), 0.6)]
+    parts += [(s0, faded(clip_audio(src, c0, d)), 0.5) for s0, (c0, d, _) in zip(starts, cuts)]
+    parts += [(s0, sfx("whoosh"), 0.3) for s0 in starts[1:-1]]
+    return render(out, T, draw, sound.mix(T, parts))
 
 
 # ---------------------------------------------------------------- the videos
@@ -660,6 +752,16 @@ SHORTS = {
         dict(src=V3.format("before_now"), s0=0.0, length=1.6),
         dict(src=V3.format("before_now"), s0=5.0, length=5.4, flash=True, punch=True),
     ], hook=[("OUR GAME,", 80, WHITE), ("ONE MONTH APART", 80, GREEN)]),
+    # Nov 10: formats that the research and our own numbers point to (race, bug + question, screenshot game, secret)
+    "30-level-1-vs-max": lambda o: montage(o, [
+        dict(src="level1_vs_max_9x16_v4.mp4", s0=0.0, length=8.0),
+    ], hook=[("WHO CLEARS 13 ZOMBIES FIRST?", 56, WHITE)], hook_y=925, beat=("hype", 0.55), clip_gain=0.8),
+    "31-keep-this-bug": lambda o: montage(o, [
+        dict(src=V3.format("bloopers"), s0=8.0, length=2.8),
+        dict(src=V3.format("bloopers"), s0=8.0, length=2.8, flash=True),
+    ], hook=[("SHOULD WE KEEP", 84, WHITE), ("THIS BUG?", 84, GREEN)], ask="YES OR NO?", beat=("hype", 0.6)),
+    "32-screenshot-your-boss": screenshot_boss,
+    "33-secret-room": secret_room,
 }
 
 
