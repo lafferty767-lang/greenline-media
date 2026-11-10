@@ -209,8 +209,9 @@
     "video": "videos/21-wait-for-the-last-one.mp4",
     "posted_on": "2026-11-09",
     "post_id": "6af19438461c268e336fed02",
-    "status": "scheduled",
-    "due_at": "2026-11-10T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-10T02:00:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7706356921946639630"
   },
   {
     "network": "youtube",
@@ -218,8 +219,9 @@
     "video": "videos/21-wait-for-the-last-one.mp4",
     "posted_on": "2026-11-09",
     "post_id": "6af19439936865624edf64b3",
-    "status": "scheduled",
-    "due_at": "2026-11-10T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-10T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/oI9Q8f99lHs"
   },
   {
     "network": "facebook",
@@ -227,7 +229,35 @@
     "video": "videos/21-wait-for-the-last-one.mp4",
     "posted_on": "2026-11-09",
     "post_id": "6af19439fdb0b4bccca5bff3",
+    "status": "sent",
+    "due_at": "2026-11-10T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/1447311564194840/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-10",
+    "video": "videos/22-guess-scrap-titan.mp4",
+    "posted_on": "2026-11-10",
+    "post_id": "6af30de885810493942e114b",
     "status": "scheduled",
-    "due_at": "2026-11-10T02:00:00+00:00"
+    "due_at": "2026-11-11T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-10",
+    "video": "videos/22-guess-scrap-titan.mp4",
+    "posted_on": "2026-11-10",
+    "post_id": "6af30de85799f4c24ff72458",
+    "status": "scheduled",
+    "due_at": "2026-11-11T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-10",
+    "video": "videos/22-guess-scrap-titan.mp4",
+    "posted_on": "2026-11-10",
+    "post_id": "6af30de985810493942e11a6",
+    "status": "scheduled",
+    "due_at": "2026-11-11T02:00:00+00:00"
   }
 ]
