@@ -146,6 +146,76 @@
   },
   {
     "date": "2026-11-11",
+    "video": "videos/25-glo-disco.mp4",
+    "tiktok": {
+      "caption": "When the zombies find the disco 🪩💚 Beta signups: link on our IG @playgreenline2026 #dance #zombies #gaming #indiegame #mobilegame"
+    },
+    "youtube": {
+      "title": "When the zombies find the disco 🪩 #shorts #gaming",
+      "description": "The whole GREENLINE crew hits the Glo Disco dance floor.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "When the zombies find the disco 🪩💚 Welcome to the Glo Disco. Beta signups: link on our Page. #indiegame #zombiegame #mobilegame #dance"
+    }
+  },
+  {
+    "date": "2026-11-12",
+    "video": "videos/26-boss-dance-off.mp4",
+    "tiktok": {
+      "caption": "Boss dance-off 🪩 who wins, 1 to 8? 👇 Beta signups: link on our IG @playgreenline2026 #danceoff #dance #gaming #indiegame #zombies"
+    },
+    "youtube": {
+      "title": "GREENLINE boss dance-off 🪩 #shorts #gaming",
+      "description": "All 8 GREENLINE bosses take a turn on the Glo Disco dance floor, from the Foreman to Dr. Verde. Who has the best moves?\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Boss dance-off 🪩 8 bosses, 1 dance floor. Who has the best moves? Comment 1 to 8 👇 Beta signups: link on our Page. #danceoff #indiegame #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-13",
+    "video": "videos/27-noob-pro-hacker.mp4",
+    "tiktok": {
+      "caption": "Noob vs pro vs hacker 🎮 which one are you? Beta signups: link on our IG @playgreenline2026 #noobvspro #gaming #indiegame #zombies #mobilegame"
+    },
+    "youtube": {
+      "title": "Noob vs pro vs hacker 🎮 #shorts #gaming",
+      "description": "One GREENLINE zombie wave, played three ways. Which one are you?\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Noob, pro or hacker: which one are you? 🎮 Beta signups: link on our Page. #noobvspro #indiegame #zombiegame #mobilegame"
+    }
+  },
+  {
+    "date": "2026-11-14",
+    "video": "videos/28-bloopers.mp4",
+    "tiktok": {
+      "caption": "Bloopers from making our game 😂 Beta signups: link on our IG @playgreenline2026 #gamedev #bloopers #indiegame #gaming #unity3d"
+    },
+    "youtube": {
+      "title": "Bloopers from making our game 😂 #shorts #gamedev",
+      "description": "Moonwalking zombies, a T-pose express, big head mode, a stuck Foreman and zero gravity: bloopers from making GREENLINE.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Bloopers from making GREENLINE 😂 Moonwalking zombies, a T-pose express and big head mode. Which one's your favorite? Beta signups: link on our Page. #gamedev #bloopers #indiegame"
+    }
+  },
+  {
+    "date": "2026-11-15",
+    "video": "videos/29-before-now.mp4",
+    "tiktok": {
+      "caption": "Our game, one month apart 👀 Beta signups: link on our IG @playgreenline2026 #gamedev #beforeandafter #indiegame #gaming #unity3d"
+    },
+    "youtube": {
+      "title": "Our game, one month apart 👀 #shorts #gamedev",
+      "description": "GREENLINE on Oct 3 next to GREENLINE now: same zombies, a whole new look.\n\nGREENLINE is a co-op cube zombie shooter for iPhone and Android by Tufufal Studios. Beta signups are open: the link is on our channel page. #indiegame #gamedev #zombies #mobilegame"
+    },
+    "facebook": {
+      "caption": "Our game, one month apart 👀 An early test build from Oct 3 next to GREENLINE now. Beta signups: link on our Page. #gamedev #indiegame #beforeandafter"
+    }
+  },
+  {
+    "date": "2026-11-16",
     "video": "videos/23-rat-king-or-dr-verde.mp4",
     "tiktok": {
       "caption": "Rat King or Dr. Verde? 1 or 2 👇 Beta signups: link on our IG @playgreenline2026 #thisorthat #bossfight #gaming #indiegame #zombies"
@@ -159,7 +229,7 @@
     }
   },
   {
-    "date": "2026-11-12",
+    "date": "2026-11-17",
     "video": "videos/24-guess-mall-cop.mp4",
     "tiktok": {
       "caption": "Guess the boss #3 👀 did you get it before the reveal? Beta signups: link on our IG @playgreenline2026 #guesstheboss #gaming #indiegame #mobilegame #zombies"
@@ -173,14 +243,14 @@
     }
   },
   {
-    "date": "2026-11-13",
+    "date": "2026-11-18",
     "video": "videos/09-ice-cream-man.mp4",
     "tiktok": {
       "caption": "This ice cream comes with a boss fight 🍦 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
     }
   },
   {
-    "date": "2026-11-13",
+    "date": "2026-11-18",
     "video": "videos/07-rat-king.mp4",
     "youtube": {
       "title": "He used to inspect the sewers. Now he runs them 🐀 #shorts #bossfight",
@@ -189,21 +259,21 @@
     }
   },
   {
-    "date": "2026-11-13",
+    "date": "2026-11-18",
     "video": "videos/04-hideout.mp4",
     "facebook": {
       "caption": "Home base in GREENLINE: a crate on a rooftop. Gun rack = armory, radio = story, side door = boss hunts 👀 Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame"
     }
   },
   {
-    "date": "2026-11-14",
+    "date": "2026-11-19",
     "video": "videos/10-eleven-kills.mp4",
     "tiktok": {
       "caption": "Count them. Did you get 11? 🎯 Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #satisfying"
     }
   },
   {
-    "date": "2026-11-14",
+    "date": "2026-11-19",
     "video": "videos/08-demolitionist.mp4",
     "youtube": {
       "title": "Is the Demolitionist worth 60 gems? 💥 #shorts #gaming",
@@ -212,21 +282,21 @@
     }
   },
   {
-    "date": "2026-11-14",
+    "date": "2026-11-19",
     "video": "videos/05-globro-boss.mp4",
     "facebook": {
       "caption": "Welcome to Glo-Land. The carnival is closed. The boss is not 🎪💚 Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame"
     }
   },
   {
-    "date": "2026-11-15",
+    "date": "2026-11-20",
     "video": "videos/11-coach.mp4",
     "tiktok": {
       "caption": "Coach never left the field 📣 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
     }
   },
   {
-    "date": "2026-11-15",
+    "date": "2026-11-20",
     "video": "videos/09-ice-cream-man.mp4",
     "youtube": {
       "title": "This ice cream comes with a boss fight 🍦 #shorts #bossfight",
@@ -235,21 +305,21 @@
     }
   },
   {
-    "date": "2026-11-15",
+    "date": "2026-11-20",
     "video": "videos/06-city-tour.mp4",
     "facebook": {
       "caption": "Quick flyover of the whole town 🏙️💚 The Yard, Glo-Land, Greenline High, the Suburbs, the Mega Mall and Greenline Tower: every stop is a Greenline site. Which map would you play first? Beta signups: link on our Page. #indiegame #gamedev #zombiegame #mobilegame #voxelart"
     }
   },
   {
-    "date": "2026-11-16",
+    "date": "2026-11-21",
     "video": "videos/12-armory.mp4",
     "tiktok": {
       "caption": "Rat-A-Tat or Beaker Blaster? Which one are you taking? ✨ Beta signups: link on our IG @playgreenline2026 #indiegame #gamedev #gameui #mobilegame #zombies"
     }
   },
   {
-    "date": "2026-11-16",
+    "date": "2026-11-21",
     "video": "videos/10-eleven-kills.mp4",
     "youtube": {
       "title": "11 zombies down in under 10 seconds 🎯 #shorts #gaming",
@@ -258,21 +328,21 @@
     }
   },
   {
-    "date": "2026-11-16",
+    "date": "2026-11-21",
     "video": "videos/07-rat-king.mp4",
     "facebook": {
       "caption": "Greenline sent him down to check the pipes. Now the rats answer to him 🐀💚 Long live the Rat King, boss of the Sewers. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-17",
+    "date": "2026-11-22",
     "video": "videos/13-mall-cop.mp4",
     "tiktok": {
       "caption": "Mall security just got a Glo upgrade 🛒 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
     }
   },
   {
-    "date": "2026-11-17",
+    "date": "2026-11-22",
     "video": "videos/11-coach.mp4",
     "youtube": {
       "title": "Coach never left the field 📣 #shorts #bossfight",
@@ -281,21 +351,21 @@
     }
   },
   {
-    "date": "2026-11-17",
+    "date": "2026-11-22",
     "video": "videos/08-demolitionist.mp4",
     "facebook": {
       "caption": "Earn 60 gems by playing and the Demolitionist is yours 💥 Worth it? Beta signups: link on our Page. #indiegame #zombiegame #gamedev #mobilegame #satisfying"
     }
   },
   {
-    "date": "2026-11-18",
+    "date": "2026-11-23",
     "video": "videos/14-rooftop-hatch.mp4",
     "tiktok": {
       "caption": "One tap and you're down the hatch 🪜 Should every game start like this? Beta signups: link on our IG @playgreenline2026 #indiegame #gamedev #gameui #mobilegame #zombies"
     }
   },
   {
-    "date": "2026-11-18",
+    "date": "2026-11-23",
     "video": "videos/12-armory.mp4",
     "youtube": {
       "title": "Rat-A-Tat or Beaker Blaster? ✨ #shorts #indiegame",
@@ -304,21 +374,21 @@
     }
   },
   {
-    "date": "2026-11-18",
+    "date": "2026-11-23",
     "video": "videos/09-ice-cream-man.mp4",
     "facebook": {
       "caption": "Brain freeze, Greenline style 🍦💚 The Ice Cream Man's Glo cone is NOT for eating. Find him in the Suburbs. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-19",
+    "date": "2026-11-24",
     "video": "videos/15-dr-verde.mp4",
     "tiktok": {
       "caption": "She invented the stuff that started all this 🧪 Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
     }
   },
   {
-    "date": "2026-11-19",
+    "date": "2026-11-24",
     "video": "videos/13-mall-cop.mp4",
     "youtube": {
       "title": "Mall security just got a Glo upgrade 🛒 #shorts #bossfight",
@@ -327,21 +397,21 @@
     }
   },
   {
-    "date": "2026-11-19",
+    "date": "2026-11-24",
     "video": "videos/10-eleven-kills.mp4",
     "facebook": {
       "caption": "Your gun auto-fires and aim assist has your back 🎯 Did you count all 11? Beta signups: link on our Page. #indiegame #zombiegame #gamedev #mobilegame #satisfying"
     }
   },
   {
-    "date": "2026-11-20",
+    "date": "2026-11-25",
     "video": "videos/16-shockwave.mp4",
     "tiktok": {
       "caption": "Would you have dodged that? 🟠 Beta signups: link on our IG @playgreenline2026 #indiegame #zombies #gaming #mobilegame #gamedev"
     }
   },
   {
-    "date": "2026-11-20",
+    "date": "2026-11-25",
     "video": "videos/14-rooftop-hatch.mp4",
     "youtube": {
       "title": "One tap and you're down the hatch 🪜 #shorts #indiegame",
@@ -350,21 +420,21 @@
     }
   },
   {
-    "date": "2026-11-20",
+    "date": "2026-11-25",
     "video": "videos/11-coach.mp4",
     "facebook": {
       "caption": "Greenline High's coach never left the field 📣💚 Shoot the Glo whistle to end the game. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-21",
+    "date": "2026-11-26",
     "video": "videos/17-scrap-titan.mp4",
     "tiktok": {
       "caption": "Built from spare parts and powered by Glo ⚙️ Beta signups: link on our IG @playgreenline2026 #indiegame #bossfight #zombies #gamedev #mobilegame"
     }
   },
   {
-    "date": "2026-11-21",
+    "date": "2026-11-26",
     "video": "videos/15-dr-verde.mp4",
     "youtube": {
       "title": "Dr. Verde invented the Glo. It did not go well 🧪 #shorts #bossfight",
@@ -373,14 +443,14 @@
     }
   },
   {
-    "date": "2026-11-21",
+    "date": "2026-11-26",
     "video": "videos/12-armory.mp4",
     "facebook": {
       "caption": "Rat-A-Tat or Beaker Blaster? ✨ Then the hard part: Ice Age, Gold, Jungle Ghost or Glo-Proof? Tell us your combo. Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-22",
+    "date": "2026-11-27",
     "video": "videos/16-shockwave.mp4",
     "youtube": {
       "title": "Would you have dodged that shockwave? 🟠 #shorts #gaming",
@@ -389,14 +459,14 @@
     }
   },
   {
-    "date": "2026-11-22",
+    "date": "2026-11-27",
     "video": "videos/13-mall-cop.mp4",
     "facebook": {
       "caption": "The Mall Cop takes mall security VERY seriously 🛒💚 The Mega Mall is his turf now. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-23",
+    "date": "2026-11-28",
     "video": "videos/17-scrap-titan.mp4",
     "youtube": {
       "title": "Built from spare parts, powered by Glo ⚙️ #shorts #bossfight",
@@ -405,28 +475,28 @@
     }
   },
   {
-    "date": "2026-11-23",
+    "date": "2026-11-28",
     "video": "videos/14-rooftop-hatch.mp4",
     "facebook": {
       "caption": "Our title screen is also the front door 🪜💚 One tap and you're climbing down into the hideout. Beta signups: link on our Page. #indiegame #gamedev #gameui #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-24",
+    "date": "2026-11-29",
     "video": "videos/15-dr-verde.mp4",
     "facebook": {
       "caption": "The scientist behind the Glo couldn't escape it either 🧪💚 Dr. Verde is waiting in the Research Lab, bubble shield and all. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
     }
   },
   {
-    "date": "2026-11-25",
+    "date": "2026-11-30",
     "video": "videos/16-shockwave.mp4",
     "facebook": {
       "caption": "Some zombies don't just walk at you. They slam the ground 🟠 Reading that warning ring is how you last at the Glo Reactor. Beta signups: link on our Page. #indiegame #zombiegame #gamedev #mobilegame #gaming"
     }
   },
   {
-    "date": "2026-11-26",
+    "date": "2026-12-01",
     "video": "videos/17-scrap-titan.mp4",
     "facebook": {
       "caption": "Spare parts, wrapped around a Glo core ⚙️💚 The Scrap Titan guards the Glo Reactor, the last stop before Greenline Tower. Beta signups: link on our Page. #indiegame #bossfight #gamedev #zombiegame #mobilegame"
