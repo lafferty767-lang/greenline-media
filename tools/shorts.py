@@ -9,7 +9,7 @@ Formats (SHORTS at the bottom lists the videos):
   this_or_that  two bosses stacked top and bottom: who would you fight?
   tier_list     each boss's intro card, then its badge photo drops into an S to D tier board
   satisfying    an explosion combo cut to the beat, with slow motion on the last one
-  montage       vertical clips back to back with a hook plate (dance party, race, bug + question)
+  montage       vertical clips back to back with a hook plate (dance party, race, staged glitch + question)
   screenshot_boss  the 8 bosses flick past in a small frame: screenshot to get yours
   secret_room   the rooftop hatch opens and the hideout is the reveal
 
@@ -543,11 +543,15 @@ def faded(x, ms=12):
     return x
 
 
+TITLE_BOX = (40, 196, W - 40, 500)  # where the v3 glitch clip shows its own title and "blooper" number
+
+
 def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None, beat=None):
     """Vertical 1080x1920 clips played back to back (the Mac's v3 and v4 clips).
 
-    segs: [dict(src, s0, length, punch=False, flash=False, badge=None, hook=None, sfx=())], each played from clip time s0.
-          A segment's own hook replaces the main one while it plays; sfx is [(name, seconds after the cut, gain)].
+    segs: [dict(src, s0, length, punch=False, flash=False, badge=None, hook=None, sfx=(), title=None)], each played
+          from clip time s0. A segment's own hook replaces the main one while it plays; sfx is [(name, seconds after
+          the cut, gain)]; title=(big line, small line) covers the title burned into the Mac's v3 glitch clip.
     hook: text lines shown on a dark plate centred at hook_y. A line pops in again only when its words change.
     music: (wav path, start s) played under everything; clip_gain sets the clips' own sound.
     beat: (style, gain) or (style, gain, drop s) adds a beat from tools/sound.py instead of a music file.
@@ -570,6 +574,10 @@ def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None
                       for k, ln in enumerate(lines)])
     ask_spr = label(ask, 76, GREEN, glow=GLOW_G) if ask else None
     badges = {i: label(sg["badge"], 120, WHITE, glow=GLOW_G) for i, sg in enumerate(segs) if sg.get("badge")}
+    titles = {i: (label(sg["title"][0], 88, WHITE), label(sg["title"][1], 56, GREEN, glow=GLOW_G))
+              for i, sg in enumerate(segs) if sg.get("title")}
+    cover = Image.new("L", (TITLE_BOX[2] - TITLE_BOX[0], TITLE_BOX[3] - TITLE_BOX[1]), 0)
+    ImageDraw.Draw(cover).rounded_rectangle((0, 0, cover.width - 1, cover.height - 1), radius=26, fill=255)
     cache = {}
 
     def frames_for(i):
@@ -597,6 +605,13 @@ def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None
                 h = sp.height - 60
                 put(c, sp, W / 2, y + h / 2, pop(t, since[i][k] + 0.05 * k, 0.18) if t > 0 else 0.9)
                 y += h
+        if i in titles:
+            # a dark frosted plate hides the title the clip came with, and ours goes on top
+            reg = c.crop(TITLE_BOX).convert("RGB").filter(ImageFilter.GaussianBlur(40))
+            reg = Image.blend(reg, Image.new("RGB", reg.size, (8, 12, 18)), 0.84)
+            c.paste(reg, TITLE_BOX[:2], cover)
+            put(c, titles[i][0], W / 2, TITLE_BOX[1] + 104, pop(t, t0, 0.2) if t > 0 else 1.0)
+            put(c, titles[i][1], W / 2, TITLE_BOX[1] + 222)
         if i in badges:
             put(c, badges[i], 120, 470, pop(t, t0, 0.2) if t > 0 else 1.0)
         if ask_spr is not None and t > T - 2.0:
@@ -760,25 +775,26 @@ SHORTS = {
         dict(src=V3.format("noob_pro_hacker"), s0=7.2, length=3.2, flash=True),
         dict(src=V3.format("noob_pro_hacker"), s0=13.6, length=4.8, flash=True),
     ], hook=[("WHICH ONE ARE YOU?", 80, WHITE)]),
-    "28-bloopers": lambda o: montage(o, [
-        dict(src=V3.format("bloopers"), s0=0.4, length=2.4),
-        dict(src=V3.format("bloopers"), s0=5.0, length=2.4, flash=True),
-        dict(src=V3.format("bloopers"), s0=8.6, length=2.4, flash=True),
-        dict(src=V3.format("bloopers"), s0=13.0, length=2.6, flash=True),
-        dict(src=V3.format("bloopers"), s0=16.2, length=1.8, flash=True),
-    ], hook=[("BUGS WE FOUND", 80, WHITE), ("MAKING OUR GAME", 80, GREEN)]),
+    # 28 and 31: the Mac staged these glitches for the camera, so the words never call them bugs or bloopers
+    "28-zombie-glitches": lambda o: montage(o, [
+        dict(src=V3.format("bloopers"), s0=0.4, length=2.4, title=("MOONWALK", "GLITCH 1")),
+        dict(src=V3.format("bloopers"), s0=5.0, length=2.4, flash=True, title=("T-POSE EXPRESS", "GLITCH 2")),
+        dict(src=V3.format("bloopers"), s0=8.6, length=2.4, flash=True, title=("BIG HEAD MODE", "GLITCH 3")),
+        dict(src=V3.format("bloopers"), s0=13.0, length=2.6, flash=True, title=("FOREMAN STUCK", "GLITCH 4")),
+        dict(src=V3.format("bloopers"), s0=16.2, length=1.8, flash=True, title=("ZERO GRAVITY", "GLITCH 5")),
+    ], hook=[("ZOMBIE GLITCHES", 80, WHITE), ("WE MADE FOR FUN", 80, GREEN)]),
     "29-before-now": lambda o: montage(o, [
         dict(src=V3.format("before_now"), s0=0.0, length=1.6),
         dict(src=V3.format("before_now"), s0=5.0, length=5.4, flash=True, punch=True),
     ], hook=[("OUR GAME,", 80, WHITE), ("ONE MONTH APART", 80, GREEN)]),
-    # Nov 10: formats that the research and our own numbers point to (race, bug + question, screenshot game, secret)
+    # Nov 10: formats that the research and our own numbers point to (race, glitch + question, screenshot game, secret)
     "30-level-1-vs-max": lambda o: montage(o, [
         dict(src="level1_vs_max_9x16_v4.mp4", s0=0.0, length=8.0),
     ], hook=[("WHO CLEARS 13 ZOMBIES FIRST?", 56, WHITE)], hook_y=925, beat=("hype", 0.55), clip_gain=0.8),
-    "31-keep-this-bug": lambda o: montage(o, [
-        dict(src=V3.format("bloopers"), s0=8.0, length=2.8),
-        dict(src=V3.format("bloopers"), s0=8.0, length=2.8, flash=True),
-    ], hook=[("SHOULD WE KEEP", 84, WHITE), ("THIS BUG?", 84, GREEN)], ask="YES OR NO?", beat=("hype", 0.6)),
+    "31-big-head-mode": lambda o: montage(o, [
+        dict(src=V3.format("bloopers"), s0=8.0, length=2.8, title=("BIG HEAD MODE", "MADE FOR FUN")),
+        dict(src=V3.format("bloopers"), s0=8.0, length=2.8, flash=True, title=("BIG HEAD MODE", "MADE FOR FUN")),
+    ], hook=[("SHOULD WE ADD", 84, WHITE), ("BIG HEAD MODE?", 84, GREEN)], ask="YES OR NO?", beat=("hype", 0.6)),
     "32-screenshot-your-boss": screenshot_boss,
     "33-secret-room": secret_room,
     # Nov 11: from the Mac's v4 clips (drafts until Logan approves them). The three "broken zombie" clips are
