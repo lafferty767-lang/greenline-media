@@ -18,7 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # ref: main reads the newest records. Without it, a run that waited in line behind another run
+      # starts from the files as they were when it was triggered and can post the same video again.
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Collect the numbers
         env:

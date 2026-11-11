@@ -30,6 +30,7 @@ Env:
 import datetime
 import json
 import os
+import subprocess
 import sys
 import time
 import urllib.error
@@ -89,6 +90,22 @@ def load(path, default):
         return default
     with open(path) as f:
         return json.load(f)
+
+
+def records_on_github():
+    """The posted list as it is on GitHub right now, or None if it can't be read.
+
+    A run can wait hours for 6 pm, or sit in line behind a run that is waiting. By the time
+    it posts, another run may already have posted today's Reel, so the list read at the
+    start can be out of date. (This is how one Reel went out twice on Nov 8.)"""
+    try:
+        subprocess.run(["git", "fetch", "-q", "origin", "main"], cwd=ROOT, check=True, timeout=120)
+        out = subprocess.run(["git", "show", "origin/main:schedule/posted.json"], cwd=ROOT, check=True,
+                             capture_output=True, text=True, timeout=60).stdout
+        return json.loads(out)
+    except Exception as e:
+        print(f"::warning::Could not re-read the posted list from GitHub ({type(e).__name__}); using the copy from the start of the run.")
+        return None
 
 
 def make_container(graph, token, ig_id, entry, how):
@@ -187,6 +204,14 @@ def main():
     if on_time and now < post_at:
         print(f"Waiting until {post_at:%H:%M} Pacific to post {entry['video']}.", flush=True)
         time.sleep((post_at - datetime.datetime.now(post_at.tzinfo)).total_seconds())
+
+    if not dry and os.environ.get("GITHUB_ACTIONS") == "true":
+        latest = records_on_github()
+        if latest is not None:
+            if any(p.get("posted_on") == day for p in latest) or entry["date"] in {p["date"] for p in latest}:
+                print(f"Another run already posted {entry['video']}, so this run posts nothing.")
+                return
+            posted = latest
 
     graph, post_token, ig_id, username = find_account(token)
     print(f"Account: @{username}  Posting {entry['video']} (scheduled {entry['date']})" + ("  (dry run)" if dry else ""))
