@@ -24,6 +24,7 @@ Env:
                   saving a Buffer draft and deleting it again; nothing is published
   POST_DATE       optional YYYY-MM-DD to use instead of today (publishes right away)
   POST_AT         Pacific time of day (HH:MM) for Buffer to publish, default 18:00
+                  (schedule/post-times.json can set another default or single days)
   POST_NOW        "true" publishes right away (manual runs)
   YOUTUBE_MADE_FOR_KIDS  "true" or "false", YouTube's audience setting
   BUFFER_URL / MEDIA_URL / POLL_SECONDS / POLL_TRIES  optional overrides, for local tests
@@ -38,6 +39,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
+
+import post_time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEDULE = os.path.join(ROOT, "schedule", "buffer.json")
@@ -182,7 +185,7 @@ def main():
     now = datetime.datetime.now(PACIFIC)
     day = os.environ.get("POST_DATE") or now.date().isoformat()
     # Publish at POST_AT today, unless that's under 10 minutes away (or past), or this is a manual post.
-    h, m = map(int, os.environ.get("POST_AT", "18:00").split(":"))
+    h, m = map(int, post_time.post_at_for(day, os.environ.get("POST_AT", "18:00")).split(":"))
     publish_at = now.replace(hour=h, minute=m, second=0, microsecond=0)
     if os.environ.get("POST_DATE") or os.environ.get("POST_NOW", "false").lower() == "true" or publish_at - now < datetime.timedelta(minutes=10):
         publish_at = None

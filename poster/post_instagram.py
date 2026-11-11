@@ -20,7 +20,8 @@ Env:
   IG_TOKEN   the key above (GitHub secret, never printed)
   DRY_RUN    "true" prepares the Reel but does not publish it
   POST_DATE  optional YYYY-MM-DD to use instead of today
-  POST_AT    Pacific time of day (HH:MM) to post, default 18:00
+  POST_AT    Pacific time of day (HH:MM) to post, default 18:00. schedule/post-times.json
+             can set another default or a time for single days (see post_time.py)
   MAX_WAIT_HOURS  how long a run may wait for POST_AT, default 5.5 (jobs stop at 6 hours)
   POST_NOW   "true" posts whatever the time (manual runs)
   IG_UPLOAD  "auto" (link first, then file upload if that fails), "url" or "file"
@@ -37,6 +38,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
+
+import post_time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEDULE = os.path.join(ROOT, "schedule", "instagram.json")
@@ -176,7 +179,7 @@ def main():
     now = datetime.datetime.now(ZoneInfo("America/Los_Angeles"))
     day = os.environ.get("POST_DATE") or now.date().isoformat()
     on_time = not (dry or os.environ.get("POST_DATE") or os.environ.get("POST_NOW", "false").lower() == "true")
-    h, m = map(int, os.environ.get("POST_AT", "18:00").split(":"))
+    h, m = map(int, post_time.post_at_for(day, os.environ.get("POST_AT", "18:00")).split(":"))
     post_at = now.replace(hour=h, minute=m, second=0, microsecond=0)
     max_wait = datetime.timedelta(hours=float(os.environ.get("MAX_WAIT_HOURS", "5.5")))
     if on_time and now < post_at - max_wait:
@@ -232,7 +235,8 @@ def main():
         print("Dry run OK: the Reel was prepared but not published.")
     else:
         media_id = call("POST", f"{graph}/{ig_id}/media_publish", post_token, {"creation_id": container})["id"]
-        posted.append({"date": entry["date"], "video": entry["video"], "posted_on": day, "media_id": media_id})
+        posted.append({"date": entry["date"], "video": entry["video"], "posted_on": day, "media_id": media_id,
+                       "posted_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")})
         with open(POSTED, "w") as f:
             json.dump(posted, f, indent=2)
             f.write("\n")

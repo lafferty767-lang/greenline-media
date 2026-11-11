@@ -1,0 +1,13 @@
+{
+  "about": "Post-time test, Nov 12 to 25, 2026: 3:30 pm Pacific on the days listed, 6 pm on the others. The Sunday tune-up picks the winner on or after Nov 29 and sets it as the default.",
+  "default": "18:00",
+  "dates": {
+    "2026-11-12": "15:30",
+    "2026-11-14": "15:30",
+    "2026-11-16": "15:30",
+    "2026-11-18": "15:30",
+    "2026-11-20": "15:30",
+    "2026-11-22": "15:30",
+    "2026-11-24": "15:30"
+  }
+}
