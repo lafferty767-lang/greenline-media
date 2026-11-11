@@ -239,8 +239,9 @@
     "video": "videos/22-guess-scrap-titan.mp4",
     "posted_on": "2026-11-10",
     "post_id": "6af30de885810493942e114b",
-    "status": "scheduled",
-    "due_at": "2026-11-11T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-11T02:00:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7706728008005995789"
   },
   {
     "network": "youtube",
@@ -248,8 +249,9 @@
     "video": "videos/22-guess-scrap-titan.mp4",
     "posted_on": "2026-11-10",
     "post_id": "6af30de85799f4c24ff72458",
-    "status": "scheduled",
-    "due_at": "2026-11-11T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-11T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/ftdPu5fguuU"
   },
   {
     "network": "facebook",
@@ -257,7 +259,35 @@
     "video": "videos/22-guess-scrap-titan.mp4",
     "posted_on": "2026-11-10",
     "post_id": "6af30de985810493942e11a6",
+    "status": "sent",
+    "due_at": "2026-11-11T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/28653617761001155/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-11",
+    "video": "videos/25-glo-disco.mp4",
+    "posted_on": "2026-11-11",
+    "post_id": "6af431af27e91ec769c1d340",
     "status": "scheduled",
-    "due_at": "2026-11-11T02:00:00+00:00"
+    "due_at": "2026-11-12T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-11",
+    "video": "videos/25-glo-disco.mp4",
+    "posted_on": "2026-11-11",
+    "post_id": "6af431b060e4cf0fafb6cfe1",
+    "status": "scheduled",
+    "due_at": "2026-11-12T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-11",
+    "video": "videos/25-glo-disco.mp4",
+    "posted_on": "2026-11-11",
+    "post_id": "6af431b07e9ab194b7ffec30",
+    "status": "scheduled",
+    "due_at": "2026-11-12T02:00:00+00:00"
   }
 ]
