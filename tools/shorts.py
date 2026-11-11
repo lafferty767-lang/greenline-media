@@ -544,16 +544,30 @@ def faded(x, ms=12):
 
 
 def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None, beat=None):
-    """Vertical 1080x1920 clips played back to back (the Mac's v3 clips).
+    """Vertical 1080x1920 clips played back to back (the Mac's v3 and v4 clips).
 
-    segs: [dict(src, s0, length, punch=False, flash=False, badge=None)], each played from clip time s0.
-    hook: text lines shown on a dark plate centred at hook_y for the whole video.
+    segs: [dict(src, s0, length, punch=False, flash=False, badge=None, hook=None, sfx=())], each played from clip time s0.
+          A segment's own hook replaces the main one while it plays; sfx is [(name, seconds after the cut, gain)].
+    hook: text lines shown on a dark plate centred at hook_y. A line pops in again only when its words change.
     music: (wav path, start s) played under everything; clip_gain sets the clips' own sound.
-    beat: (style, gain) adds a beat from tools/sound.py instead of a music file.
-    ask: text that pops over the hook for the last 2 s (e.g. "COMMENT 1-8")."""
+    beat: (style, gain) or (style, gain, drop s) adds a beat from tools/sound.py instead of a music file.
+    ask: text that pops next to the hook for the last 2 s (e.g. "COMMENT 1-8"): above a low hook, below a high one."""
     T = sum(sg["length"] for sg in segs)
     starts = np.cumsum([0] + [sg["length"] for sg in segs])[:-1]
-    lines = [label(txt, size, col, glow=GLOW_G if col == GREEN else None) for txt, size, col in hook]
+    texts = [list(sg.get("hook") or hook) for sg in segs]
+    sprites = {}
+
+    def sprite(line):
+        if line not in sprites:
+            txt, size, col = line
+            sprites[line] = label(txt, size, col, glow=GLOW_G if col == GREEN else GLOW_R if col == RED else None)
+        return sprites[line]
+
+    # when each line of each segment popped in: the start of the run of segments that show the same words there
+    since = []
+    for i, lines in enumerate(texts):
+        since.append([since[i - 1][k] if i and k < len(texts[i - 1]) and texts[i - 1][k] == ln else float(starts[i])
+                      for k, ln in enumerate(lines)])
     ask_spr = label(ask, 76, GREEN, glow=GLOW_G) if ask else None
     badges = {i: label(sg["badge"], 120, WHITE, glow=GLOW_G) for i, sg in enumerate(segs) if sg.get("badge")}
     cache = {}
@@ -565,8 +579,6 @@ def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None
             cache[i] = Clip(sg["src"], sg["s0"], sg["s0"] + sg["length"] + 0.1, (0, 0, 1080, 1920), (W, H), fps=FPS)
         return cache[i]
 
-    hook_h = sum(sp.height - 60 for sp in lines)
-
     def draw(t):
         i = int(np.searchsorted(starts, t, side="right") - 1)
         sg, t0 = segs[i], starts[i]
@@ -574,6 +586,8 @@ def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None
         if sg.get("punch"):
             img = punch(img, 1 + 0.08 * decay(t, t0, 0.3))
         c = flash(img, 0.8 * decay(t, t0, 0.2)) if sg.get("flash") else img
+        lines = [sprite(ln) for ln in texts[i]]
+        hook_h = sum(sp.height - 60 for sp in lines)
         if lines:
             y = hook_y - hook_h / 2
             plate = Image.new("RGBA", (W, H))
@@ -581,30 +595,35 @@ def montage(out, segs, hook=(), hook_y=1400, music=None, clip_gain=1.0, ask=None
             c.alpha_composite(plate)
             for k, sp in enumerate(lines):
                 h = sp.height - 60
-                put(c, sp, W / 2, y + h / 2, pop(t, 0.05 * k, 0.18) if t > 0 else 0.9)
+                put(c, sp, W / 2, y + h / 2, pop(t, since[i][k] + 0.05 * k, 0.18) if t > 0 else 0.9)
                 y += h
         if i in badges:
             put(c, badges[i], 120, 470, pop(t, t0, 0.2) if t > 0 else 1.0)
         if ask_spr is not None and t > T - 2.0:
-            put(c, ask_spr, W / 2, hook_y - hook_h / 2 - 90, pop(t, T - 2.0))
+            ask_y = hook_y - hook_h / 2 - 90 if hook_y > H / 2 else hook_y + hook_h / 2 + 100
+            put(c, ask_spr, W / 2, ask_y, pop(t, T - 2.0))
         return c
 
     parts = []
     if music:
         parts.append((0, music_audio(music[0], music[1], T), 1.0))
     if beat:
-        parts.append((0, sound.beat(T, style=beat[0]), beat[1]))
+        parts.append((0, sound.beat(T, style=beat[0], drop=beat[2] if len(beat) > 2 else None), beat[1]))
     if clip_gain:
         for sg, t0 in zip(segs, starts):
-            parts.append((t0, faded(clip_audio(sg["src"], sg["s0"], sg["length"])), clip_gain))
+            parts.append((t0, faded(clip_audio(sg["src"], sg["s0"], sg["length"])), clip_gain * sg.get("gain", 1.0)))
     for sg, t0 in zip(segs, starts):
         if sg.get("flash"):
             parts.append((t0, sfx("whoosh"), 0.35))
+        for name, after, gain in sg.get("sfx", ()):
+            parts.append((max(0.0, t0 + after), sfx(name), gain))
     audio = sound.mix(T, parts)
     return render(out, T, draw, audio)
 
 
 V3 = "greenline_v3_9x16_{}.mp4"
+V4 = "greenline_v4_9x16_{}.mp4"
+PICK = ("PICK YOUR CLASS", 84, WHITE)
 DISCO = "greenline_music_disco_125_a.wav"  # 125 BPM, first beat at 0.02 s; the disco clips start in sync with it
 BAR = 4 * 60 / 125
 
@@ -762,6 +781,44 @@ SHORTS = {
     ], hook=[("SHOULD WE KEEP", 84, WHITE), ("THIS BUG?", 84, GREEN)], ask="YES OR NO?", beat=("hype", 0.6)),
     "32-screenshot-your-boss": screenshot_boss,
     "33-secret-room": secret_room,
+    # Nov 11: from the Mac's v4 clips (drafts until Logan approves them). The three "broken zombie" clips are
+    # staged jokes, so the words say "on purpose" and never call them bugs.
+    "34-squad-vs-one-zombie": lambda o: montage(o, [
+        dict(src=V4.format("coop_chaos"), s0=0.0, length=3.4, hook=[("4 PLAYERS", 84, WHITE), ("VS 1 ZOMBIE", 84, GREEN)]),
+        dict(src=V4.format("coop_chaos"), s0=4.4, length=5.4, flash=True,
+             hook=[("THEN HIS BOSS", 84, WHITE), ("SHOWED UP", 84, RED)]),
+    ], hook_y=330, beat=("hype", 0.5), clip_gain=0.8, ask="WHICH FRIEND RUNS FIRST?"),
+    "35-medic-save": lambda o: montage(o, [
+        dict(src=V4.format("last_save"), s0=0.0, length=2.6, hook=[("NO WAY OUT...", 84, WHITE)]),
+        dict(src=V4.format("last_save"), s0=2.6, length=5.2, hook=[("UNLESS YOU'RE", 84, WHITE), ("THE MEDIC", 84, GREEN)]),
+    ], hook_y=330, beat=("quiz", 0.6, 2.6), clip_gain=0.8, ask="WOULD YOU PLAY MEDIC?"),
+    "36-meet-the-lurker": lambda o: montage(o, [
+        dict(src=V4.format("lurker"), s0=1.2, length=2.4, sfx=[("riser", 1.4, 0.4)],
+             hook=[("SOMETHING LIVES", 80, WHITE), ("IN OUR SEWERS", 80, GREEN)]),
+        dict(src=V4.format("lurker"), s0=3.6, length=2.4, punch=True, sfx=[("impact", 0.05, 0.8)],
+             hook=[("MEET THE LURKER", 84, GREEN)]),
+        dict(src=V4.format("lurker"), s0=7.9, length=1.6, flash=True, hook=[("AND IT HAS FRIENDS", 76, WHITE)]),
+    ], hook_y=330, beat=("quiz", 0.55, 2.4), clip_gain=0.9, ask="COULD YOU BEAT IT?"),
+    "37-who-is-hiding": lambda o: montage(o, [
+        dict(src=V4.format("secret"), s0=1.4, length=3.2, sfx=[("riser", 2.2, 0.4)],
+             hook=[("WHO IS HIDING IN", 80, WHITE), ("THIS CONTAINER?", 80, GREEN)]),
+        dict(src=V4.format("secret"), s0=4.6, length=1.5, punch=True, sfx=[("reveal", 0.1, 0.5)],
+             hook=[("A SURVIVOR!", 96, GREEN)]),
+        dict(src=V4.format("secret"), s0=4.6, length=1.5, flash=True, hook=[("A SURVIVOR!", 96, GREEN)]),
+    ], hook_y=330, beat=("quiz", 0.55, 3.2), clip_gain=0.8, ask="NAME THIS SURVIVOR"),
+    "38-we-broke-our-zombies": lambda o: montage(o, [
+        dict(src=V4.format("bug_helicopter"), s0=1.3, length=2.6, badge="1"),
+        dict(src=V4.format("bug_conga"), s0=1.0, length=2.6, flash=True, badge="2"),
+        dict(src=V4.format("bug_tinyboss"), s0=0.6, length=2.8, flash=True, badge="3",
+             hook=[("WE BROKE OUR ZOMBIES", 72, WHITE), ("WHICH ONE? 1, 2 OR 3", 72, GREEN)]),
+    ], hook=[("WE BROKE OUR ZOMBIES", 72, WHITE), ("ON PURPOSE", 84, GREEN)], hook_y=1450, beat=("hype", 0.55),
+        clip_gain=0.7),
+    "39-pick-your-class": lambda o: montage(o, [
+        dict(src=V4.format("ability_demolitionist"), s0=4.6, length=2.0, hook=[PICK, ("1. DEMOLITIONIST", 80, GREEN)]),
+        dict(src=V4.format("ability_medic"), s0=2.0, length=2.0, flash=True, hook=[PICK, ("2. MEDIC", 80, GREEN)]),
+        dict(src=V4.format("ability_jester"), s0=1.4, length=2.0, flash=True, hook=[PICK, ("3. JESTER", 80, GREEN)]),
+        dict(src=V4.format("ability_gauge"), s0=3.0, length=2.0, flash=True, hook=[PICK, ("4. GAUGE", 80, GREEN)]),
+    ], hook_y=320, beat=("hype", 0.55), clip_gain=0.8, ask="WHICH ONE ARE YOU?"),
 }
 
 
