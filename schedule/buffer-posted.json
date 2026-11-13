@@ -299,8 +299,9 @@
     "video": "videos/26-boss-dance-off.mp4",
     "posted_on": "2026-11-12",
     "post_id": "6af589a96311ec67c81ccc57",
-    "status": "scheduled",
-    "due_at": "2026-11-12T23:30:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-12T23:30:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7707431410692295949"
   },
   {
     "network": "youtube",
@@ -308,8 +309,9 @@
     "video": "videos/26-boss-dance-off.mp4",
     "posted_on": "2026-11-12",
     "post_id": "6af589a96311ec67c81ccc7f",
-    "status": "scheduled",
-    "due_at": "2026-11-12T23:30:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-12T23:30:00+00:00",
+    "link": "https://www.youtube.com/shorts/Pln1wl_KsgU"
   },
   {
     "network": "facebook",
@@ -317,7 +319,35 @@
     "video": "videos/26-boss-dance-off.mp4",
     "posted_on": "2026-11-12",
     "post_id": "6af589aa5edf04f414e973cb",
+    "status": "sent",
+    "due_at": "2026-11-12T23:30:00+00:00",
+    "link": "https://www.facebook.com/reel/1677632333773139/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-13",
+    "video": "videos/27-noob-pro-hacker.mp4",
+    "posted_on": "2026-11-13",
+    "post_id": "6af6d78379d79987eb31715c",
     "status": "scheduled",
-    "due_at": "2026-11-12T23:30:00+00:00"
+    "due_at": "2026-11-14T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-13",
+    "video": "videos/27-noob-pro-hacker.mp4",
+    "posted_on": "2026-11-13",
+    "post_id": "6af6d7841210df36679c260f",
+    "status": "scheduled",
+    "due_at": "2026-11-14T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-13",
+    "video": "videos/27-noob-pro-hacker.mp4",
+    "posted_on": "2026-11-13",
+    "post_id": "6af6d78479d79987eb317196",
+    "status": "scheduled",
+    "due_at": "2026-11-14T02:00:00+00:00"
   }
 ]
