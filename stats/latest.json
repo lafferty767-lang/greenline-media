@@ -1,12 +1,12 @@
 {
-  "collected": "2026-11-13T22:43:19+00:00",
+  "collected": "2026-11-14T21:36:36+00:00",
   "posts": [
     {
       "network": "youtube",
       "date": "2026-10-29",
       "video": "01-teaser.mp4",
       "link": "https://www.youtube.com/watch?v=WH7rkJSfUBs",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 1,
         "comments": 0,
@@ -19,7 +19,7 @@
       "date": "2026-10-30",
       "video": "02-foreman-boss.mp4",
       "link": "https://www.youtube.com/watch?v=dMx5Jwekj9s",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -32,7 +32,7 @@
       "date": "2026-10-31",
       "video": "03-one-grenade.mp4",
       "link": "https://www.youtube.com/watch?v=QJXKsR2UESw",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -45,7 +45,7 @@
       "date": "2026-11-03",
       "video": "06-city-tour.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7703875633528474893",
-      "updated": "2026-11-13T06:42:34.779Z",
+      "updated": "2026-11-14T05:43:31.454Z",
       "metrics": {
         "reactions": 7,
         "comments": 0,
@@ -62,7 +62,7 @@
       "date": "2026-11-01",
       "video": "04-hideout.mp4",
       "link": "https://www.youtube.com/watch?v=YQWnpF-XqMg",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -75,7 +75,7 @@
       "date": "2026-10-29",
       "video": "01-teaser.mp4",
       "link": "https://facebook.com/1405412902654023_122097532179540488",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -91,7 +91,7 @@
       "date": "2026-11-04",
       "video": "07-rat-king.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7704501411152743693",
-      "updated": "2026-11-13T06:42:34.779Z",
+      "updated": "2026-11-14T05:43:31.454Z",
       "metrics": {
         "reactions": 3,
         "comments": 0,
@@ -99,8 +99,8 @@
         "views": 323,
         "shares": 0,
         "reach": 304,
-        "totalTimeWatched": 28.58,
-        "averageTimeWatched": 5.15
+        "totalTimeWatched": 28.2,
+        "averageTimeWatched": 5.07
       }
     },
     {
@@ -108,7 +108,7 @@
       "date": "2026-11-02",
       "video": "05-globro-boss.mp4",
       "link": "https://www.youtube.com/shorts/9yb_JLq-uIw",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -121,7 +121,7 @@
       "date": "2026-10-30",
       "video": "02-foreman-boss.mp4",
       "link": "https://www.facebook.com/reel/1655741985944227/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -137,12 +137,12 @@
       "date": "2026-11-05",
       "video": "08-demolitionist.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7704872565285637389",
-      "updated": "2026-11-13T06:42:34.779Z",
+      "updated": "2026-11-14T05:43:31.454Z",
       "metrics": {
         "reactions": 1,
         "comments": 0,
         "engagementRate": 0.44,
-        "views": 225,
+        "views": 226,
         "shares": 0,
         "reach": 217,
         "totalTimeWatched": 14.55,
@@ -154,7 +154,7 @@
       "date": "2026-11-03",
       "video": "06-city-tour.mp4",
       "link": "https://www.youtube.com/shorts/EorbKMPzeYI",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -167,7 +167,7 @@
       "date": "2026-10-31",
       "video": "03-one-grenade.mp4",
       "link": "https://www.facebook.com/reel/1816500842923981/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -183,14 +183,14 @@
       "date": "2026-11-06",
       "video": "18-guess-rat-king.mp4",
       "link": "https://www.tiktok.com/@playgreenline/video/7705243601617407246?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.454Z",
       "metrics": {
         "reactions": 1,
         "comments": 0,
         "engagementRate": 0.34,
         "views": 290,
         "shares": 0,
-        "reach": 268,
+        "reach": 270,
         "totalTimeWatched": 22.72,
         "averageTimeWatched": 4.62
       }
@@ -200,7 +200,7 @@
       "date": "2026-11-06",
       "video": "18-guess-rat-king.mp4",
       "link": "https://www.youtube.com/shorts/Vgr6a-YKHJw",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -213,7 +213,7 @@
       "date": "2026-11-06",
       "video": "18-guess-rat-king.mp4",
       "link": "https://www.facebook.com/reel/2198844031034422/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 2,
         "comments": 0,
@@ -229,7 +229,7 @@
       "date": "2026-11-07",
       "video": "19-ice-cream-or-mall-cop.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7705614726687984910",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.454Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -246,7 +246,7 @@
       "date": "2026-11-07",
       "video": "19-ice-cream-or-mall-cop.mp4",
       "link": "https://www.youtube.com/shorts/EpbMbla8REo",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -259,7 +259,7 @@
       "date": "2026-11-07",
       "video": "19-ice-cream-or-mall-cop.mp4",
       "link": "https://www.facebook.com/reel/1476279224410836/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 1,
         "comments": 0,
@@ -275,7 +275,7 @@
       "date": "2026-11-08",
       "video": "20-boss-tier-list.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7705985781357153549",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.453Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -292,7 +292,7 @@
       "date": "2026-11-08",
       "video": "20-boss-tier-list.mp4",
       "link": "https://www.youtube.com/shorts/9ZBHQn5dLqc",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -305,7 +305,7 @@
       "date": "2026-11-08",
       "video": "20-boss-tier-list.mp4",
       "link": "https://www.facebook.com/reel/1529620535657662/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -321,14 +321,14 @@
       "date": "2026-11-09",
       "video": "21-wait-for-the-last-one.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7706356921946639630",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.453Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
         "engagementRate": 0,
         "views": 138,
         "shares": 0,
-        "reach": 135,
+        "reach": 136,
         "totalTimeWatched": 8.8,
         "averageTimeWatched": 3.21
       }
@@ -338,7 +338,7 @@
       "date": "2026-11-09",
       "video": "21-wait-for-the-last-one.mp4",
       "link": "https://www.youtube.com/shorts/oI9Q8f99lHs",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -351,7 +351,7 @@
       "date": "2026-11-09",
       "video": "21-wait-for-the-last-one.mp4",
       "link": "https://www.facebook.com/reel/1447311564194840/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -367,7 +367,7 @@
       "date": "2026-11-10",
       "video": "22-guess-scrap-titan.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7706728008005995789",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.453Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -384,7 +384,7 @@
       "date": "2026-11-10",
       "video": "22-guess-scrap-titan.mp4",
       "link": "https://www.youtube.com/shorts/ftdPu5fguuU",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -397,7 +397,7 @@
       "date": "2026-11-10",
       "video": "22-guess-scrap-titan.mp4",
       "link": "https://www.facebook.com/reel/28653617761001155/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -413,14 +413,14 @@
       "date": "2026-11-11",
       "video": "25-glo-disco.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7707099161094638861",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.453Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
         "engagementRate": 0,
         "views": 114,
         "shares": 0,
-        "reach": 0,
+        "reach": 107,
         "totalTimeWatched": 6.45,
         "averageTimeWatched": 3.29
       }
@@ -430,7 +430,7 @@
       "date": "2026-11-11",
       "video": "25-glo-disco.mp4",
       "link": "https://www.youtube.com/shorts/q-OLxTjIVxc",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.300Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -443,13 +443,13 @@
       "date": "2026-11-11",
       "video": "25-glo-disco.mp4",
       "link": "https://www.facebook.com/reel/1669733111271179/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 1,
         "comments": 0,
-        "engagementRate": 0.78,
-        "impressions": 129,
-        "reach": 124,
+        "engagementRate": 0.77,
+        "impressions": 130,
+        "reach": 125,
         "shares": 0,
         "clicks": 0
       }
@@ -459,16 +459,16 @@
       "date": "2026-11-12",
       "video": "26-boss-dance-off.mp4",
       "link": "https://tiktok.com/@playgreenline/video/7707431410692295949",
-      "updated": "2026-11-13T06:42:34.778Z",
+      "updated": "2026-11-14T05:43:31.453Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
         "engagementRate": 0,
-        "views": 96,
+        "views": 108,
         "shares": 0,
-        "reach": 0,
-        "totalTimeWatched": 6.75,
-        "averageTimeWatched": 4.18
+        "reach": 22,
+        "totalTimeWatched": 7.37,
+        "averageTimeWatched": 4.06
       }
     },
     {
@@ -476,7 +476,7 @@
       "date": "2026-11-12",
       "video": "26-boss-dance-off.mp4",
       "link": "https://www.youtube.com/shorts/Pln1wl_KsgU",
-      "updated": "2026-11-13T10:26:36.781Z",
+      "updated": "2026-11-14T09:29:13.299Z",
       "metrics": {
         "reactions": 0,
         "comments": 0,
@@ -489,13 +489,59 @@
       "date": "2026-11-12",
       "video": "26-boss-dance-off.mp4",
       "link": "https://www.facebook.com/reel/1677632333773139/",
-      "updated": "2026-11-13T11:08:04.512Z",
+      "updated": "2026-11-14T10:08:14.752Z",
       "metrics": {
         "reactions": 1,
         "comments": 0,
         "engagementRate": 0.5,
-        "impressions": 200,
-        "reach": 167,
+        "impressions": 202,
+        "reach": 169,
+        "shares": 0,
+        "clicks": 0
+      }
+    },
+    {
+      "network": "tiktok",
+      "date": "2026-11-13",
+      "video": "27-noob-pro-hacker.mp4",
+      "link": "https://www.tiktok.com/@playgreenline/video/7707841186416856334?utm_campaign=tt4d_open_api&utm_source=7103819247981182978",
+      "updated": "2026-11-14T05:43:31.453Z",
+      "metrics": {
+        "reactions": 1,
+        "comments": 0,
+        "engagementRate": 1,
+        "views": 100,
+        "shares": 0,
+        "reach": 0,
+        "totalTimeWatched": 8.87,
+        "averageTimeWatched": 5.17
+      }
+    },
+    {
+      "network": "youtube",
+      "date": "2026-11-13",
+      "video": "27-noob-pro-hacker.mp4",
+      "link": "https://www.youtube.com/shorts/TEdXIvSbN_U",
+      "updated": "2026-11-14T09:29:13.299Z",
+      "metrics": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "views": 0
+      }
+    },
+    {
+      "network": "facebook",
+      "date": "2026-11-13",
+      "video": "27-noob-pro-hacker.mp4",
+      "link": "https://www.facebook.com/reel/1128628199751383/",
+      "updated": "2026-11-14T10:08:14.752Z",
+      "metrics": {
+        "reactions": 0,
+        "comments": 0,
+        "engagementRate": 0,
+        "impressions": 240,
+        "reach": 199,
         "shares": 0,
         "clicks": 0
       }
@@ -653,12 +699,23 @@
         "like_count": 0,
         "comments_count": 0
       }
+    },
+    {
+      "network": "instagram",
+      "date": "2026-11-12",
+      "video": "27-noob-pro-hacker.mp4",
+      "link": "https://www.instagram.com/reel/DftFVOgAo9o/",
+      "posted": "2026-11-14T02:00:51+0000",
+      "metrics": {
+        "like_count": 0,
+        "comments_count": 0
+      }
     }
   ],
   "instagram_account": {
     "username": "playgreenline2026",
     "id": "17841458144669049",
     "followers_count": 0,
-    "media_count": 15
+    "media_count": 16
   }
 }
