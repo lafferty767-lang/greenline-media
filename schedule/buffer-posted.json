@@ -329,8 +329,9 @@
     "video": "videos/27-noob-pro-hacker.mp4",
     "posted_on": "2026-11-13",
     "post_id": "6af6d78379d79987eb31715c",
-    "status": "scheduled",
-    "due_at": "2026-11-14T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-14T02:00:00+00:00",
+    "link": "https://www.tiktok.com/@playgreenline/video/7707841186416856334?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
   },
   {
     "network": "youtube",
@@ -338,8 +339,9 @@
     "video": "videos/27-noob-pro-hacker.mp4",
     "posted_on": "2026-11-13",
     "post_id": "6af6d7841210df36679c260f",
-    "status": "scheduled",
-    "due_at": "2026-11-14T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-14T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/TEdXIvSbN_U"
   },
   {
     "network": "facebook",
@@ -347,7 +349,35 @@
     "video": "videos/27-noob-pro-hacker.mp4",
     "posted_on": "2026-11-13",
     "post_id": "6af6d78479d79987eb317196",
+    "status": "sent",
+    "due_at": "2026-11-14T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/1128628199751383/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-14",
+    "video": "videos/28-zombie-glitches.mp4",
+    "posted_on": "2026-11-14",
+    "post_id": "6af860dec5b364e062f272b4",
     "status": "scheduled",
-    "due_at": "2026-11-14T02:00:00+00:00"
+    "due_at": "2026-11-14T23:30:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-14",
+    "video": "videos/28-zombie-glitches.mp4",
+    "posted_on": "2026-11-14",
+    "post_id": "6af860dec5b364e062f2731c",
+    "status": "scheduled",
+    "due_at": "2026-11-14T23:30:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-14",
+    "video": "videos/28-zombie-glitches.mp4",
+    "posted_on": "2026-11-14",
+    "post_id": "6af860dfc5b364e062f2735b",
+    "status": "scheduled",
+    "due_at": "2026-11-14T23:30:00+00:00"
   }
 ]
