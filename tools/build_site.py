@@ -27,6 +27,8 @@ REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from shorts import BOSSES, ROOT as CLIPS, Clip  # noqa: E402
 
+# Where the page lives (GitHub Pages on the Tufufal-Studios/greenline repo). Link previews need full addresses.
+SITE = "https://tufufal-studios.github.io/greenline/"
 FORM = "https://docs.google.com/forms/d/e/1FAIpQLSd51AuoKTMDFyrlNFWwah8pnWpVvALnqrFCke5LK_ycoza8qA/viewform"
 SOCIAL = [("TikTok", "https://www.tiktok.com/@playgreenline"),
           ("Instagram", "https://www.instagram.com/playgreenline2026/"),
@@ -258,7 +260,10 @@ def page(videos):
 <meta property="og:title" content="GREENLINE, a co-op cube zombie shooter for phones">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="a/hero.jpg">
+<meta property="og:url" content="{SITE}">
+<meta property="og:image" content="{SITE}a/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{SITE}">
 <meta name="theme-color" content="#141a4a">
 <link rel="icon" href="a/icon-180.png">
 <link rel="apple-touch-icon" href="a/icon-180.png">
