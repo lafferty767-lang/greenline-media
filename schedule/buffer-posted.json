@@ -359,8 +359,9 @@
     "video": "videos/28-zombie-glitches.mp4",
     "posted_on": "2026-11-14",
     "post_id": "6af860dec5b364e062f272b4",
-    "status": "scheduled",
-    "due_at": "2026-11-14T23:30:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-14T23:30:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7708173479564168478"
   },
   {
     "network": "youtube",
@@ -368,8 +369,9 @@
     "video": "videos/28-zombie-glitches.mp4",
     "posted_on": "2026-11-14",
     "post_id": "6af860dec5b364e062f2731c",
-    "status": "scheduled",
-    "due_at": "2026-11-14T23:30:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-14T23:30:00+00:00",
+    "link": "https://www.youtube.com/shorts/jNnocqrqEJM"
   },
   {
     "network": "facebook",
@@ -377,7 +379,35 @@
     "video": "videos/28-zombie-glitches.mp4",
     "posted_on": "2026-11-14",
     "post_id": "6af860dfc5b364e062f2735b",
+    "status": "sent",
+    "due_at": "2026-11-14T23:30:00+00:00",
+    "link": "https://www.facebook.com/reel/1155959026897515/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-15",
+    "video": "videos/29-before-now.mp4",
+    "posted_on": "2026-11-15",
+    "post_id": "6af9d137c5b364e062654822",
     "status": "scheduled",
-    "due_at": "2026-11-14T23:30:00+00:00"
+    "due_at": "2026-11-16T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-15",
+    "video": "videos/29-before-now.mp4",
+    "posted_on": "2026-11-15",
+    "post_id": "6af9d137e5a113497af762f0",
+    "status": "scheduled",
+    "due_at": "2026-11-16T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-15",
+    "video": "videos/29-before-now.mp4",
+    "posted_on": "2026-11-15",
+    "post_id": "6af9d138544d0574a9282b03",
+    "status": "scheduled",
+    "due_at": "2026-11-16T02:00:00+00:00"
   }
 ]
