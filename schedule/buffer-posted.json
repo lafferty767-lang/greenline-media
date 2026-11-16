@@ -389,8 +389,9 @@
     "video": "videos/29-before-now.mp4",
     "posted_on": "2026-11-15",
     "post_id": "6af9d137c5b364e062654822",
-    "status": "scheduled",
-    "due_at": "2026-11-16T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-16T02:00:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7708583309365873934"
   },
   {
     "network": "youtube",
@@ -398,8 +399,9 @@
     "video": "videos/29-before-now.mp4",
     "posted_on": "2026-11-15",
     "post_id": "6af9d137e5a113497af762f0",
-    "status": "scheduled",
-    "due_at": "2026-11-16T02:00:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-16T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/xTkUywstYV4"
   },
   {
     "network": "facebook",
@@ -407,7 +409,35 @@
     "video": "videos/29-before-now.mp4",
     "posted_on": "2026-11-15",
     "post_id": "6af9d138544d0574a9282b03",
+    "status": "sent",
+    "due_at": "2026-11-16T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/29492151693742949/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-16",
+    "video": "videos/34-squad-vs-one-zombie.mp4",
+    "posted_on": "2026-11-16",
+    "post_id": "6afacc2660a910801c82b94a",
     "status": "scheduled",
-    "due_at": "2026-11-16T02:00:00+00:00"
+    "due_at": "2026-11-16T23:30:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-16",
+    "video": "videos/34-squad-vs-one-zombie.mp4",
+    "posted_on": "2026-11-16",
+    "post_id": "6afacc268e87c256a3c83b99",
+    "status": "scheduled",
+    "due_at": "2026-11-16T23:30:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-16",
+    "video": "videos/34-squad-vs-one-zombie.mp4",
+    "posted_on": "2026-11-16",
+    "post_id": "6afacc27a869c35e5bd1a81c",
+    "status": "scheduled",
+    "due_at": "2026-11-16T23:30:00+00:00"
   }
 ]
