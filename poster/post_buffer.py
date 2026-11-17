@@ -52,6 +52,11 @@ POLL_SECONDS = int(os.environ.get("POLL_SECONDS", "15"))
 POLL_TRIES = int(os.environ.get("POLL_TRIES", "16"))
 MADE_FOR_KIDS = os.environ.get("YOUTUBE_MADE_FOR_KIDS", "true").lower() == "true"
 NETWORKS = {"tiktok": "TikTok", "youtube": "YouTube", "facebook": "Facebook"}
+# "notification": at post time Buffer sends the TikTok video to the Buffer phone app, and Logan finishes it in TikTok
+# with a trending sound. "automatic": Buffer posts it with nobody acting. Instagram, YouTube and Facebook stay automatic.
+TIKTOK_SCHEDULING = os.environ.get("TIKTOK_SCHEDULING", "automatic").strip() or "automatic"
+# "reminded" = a reminder went to the phone; whether it was then posted is up to Logan, so it counts as done.
+FINAL = ("sent", "error", "reminded")
 PACIFIC = ZoneInfo("America/Los_Angeles")
 
 CHANNELS = """query($org: OrganizationId!) {
@@ -137,7 +142,7 @@ def check(key, rec, tries=1):
                 rec["link"] = post["externalLink"]
             if post.get("error"):
                 rec["error"] = post["error"]["message"] + (f" ({post['error']['supportUrl']})" if post["error"].get("supportUrl") else "")
-        if rec.get("status") in ("sent", "error") or i == tries - 1:
+        if rec.get("status") in FINAL or i == tries - 1:
             return
         time.sleep(POLL_SECONDS)
 
@@ -145,8 +150,10 @@ def check(key, rec, tries=1):
 def report(rec, problems):
     label = NETWORKS[rec["network"]]
     due = rec.get("due_at")
-    if rec["status"] not in ("sent", "error") and due and datetime.datetime.fromisoformat(due) > datetime.datetime.now(datetime.timezone.utc):
+    if rec["status"] not in FINAL and due and datetime.datetime.fromisoformat(due) > datetime.datetime.now(datetime.timezone.utc):
         print(f"{label}: {rec['video']} is scheduled for {datetime.datetime.fromisoformat(due).astimezone(PACIFIC):%-I:%M %p} Pacific.")
+    elif rec["status"] == "reminded":
+        print(f"{label}: the reminder for {rec['video']} went to the Buffer phone app.")
     elif rec["status"] == "sent":
         print(f"{label}: {rec['video']} is live" + (f" at {rec['link']}" if rec.get("link") else "") + ".")
     elif rec["status"] == "error":
@@ -164,6 +171,7 @@ def build_input(net, entry, channel_id):
     }
     if net == "tiktok":
         inp["text"] = entry["tiktok"]["caption"]
+        inp["schedulingType"] = TIKTOK_SCHEDULING
     elif net == "facebook":
         inp["text"] = entry["facebook"]["caption"]
         inp["metadata"] = {"facebook": {"type": "reel"}}  # a first comment needs a paid Buffer plan
@@ -193,7 +201,7 @@ def main():
     posted = load(POSTED, [])
 
     # Nothing to do (every network has today's post and nothing earlier is pending): skip the API calls.
-    pending = [r for r in posted if r.get("status") not in ("sent", "error") and r["posted_on"] < day]
+    pending = [r for r in posted if r.get("status") not in FINAL and r["posted_on"] < day]
     if not dry and not pending and all(any(r["network"] == net and r["posted_on"] == day for r in posted) or not any(net in e for e in schedule) for net in NETWORKS):
         print(f"Everything for {day} is already handed to Buffer.")
         return
@@ -212,10 +220,12 @@ def main():
     # Posts from earlier runs that were still publishing: see how they ended.
     yesterday = (datetime.date.fromisoformat(day) - datetime.timedelta(days=1)).isoformat()
     for rec in posted:
-        if rec.get("status") not in ("sent", "error") and rec["posted_on"] < day:
+        if rec.get("status") not in FINAL and rec["posted_on"] < day:
             check(key, rec)
+            if rec.get("scheduling") == "notification" and rec["status"] not in FINAL:
+                rec["status"] = "reminded"  # Buffer keeps reminder posts open; the reminder time has passed
             report(rec, problems)
-            if rec["status"] not in ("sent", "error") and rec["posted_on"] < yesterday:
+            if rec["status"] not in FINAL and rec["posted_on"] < yesterday:
                 problems.append(f"{NETWORKS[rec['network']]}: {rec['video']} has been stuck in Buffer since {rec['posted_on']}. Check it at publish.buffer.com.")
     save(posted)
 
@@ -249,6 +259,11 @@ def main():
         elif publish_at:
             inp.update(mode="customScheduled", dueAt=publish_at.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"))
         result = gql(key, CREATE, {"input": inp})["createPost"]
+        if not result.get("post") and inp["schedulingType"] == "notification":
+            # Reminders not allowed (plan, app or channel): post it automatically today rather than skip the day.
+            print(f"::warning::{label}: Buffer refused a reminder post ({result.get('message') or result.get('__typename')}), so it posts automatically instead.")
+            inp["schedulingType"] = "automatic"
+            result = gql(key, CREATE, {"input": inp})["createPost"]
         if not result.get("post"):
             problems.append(f"{label}: Buffer refused {entry['video']}: {result.get('message') or result.get('__typename')}")
             continue
@@ -260,7 +275,7 @@ def main():
             continue
 
         rec = {"network": net, "date": entry["date"], "video": entry["video"], "posted_on": day,
-               "post_id": post["id"], "status": post["status"]}
+               "post_id": post["id"], "status": post["status"], "scheduling": inp["schedulingType"]}
         if publish_at:
             rec["due_at"] = publish_at.astimezone(datetime.timezone.utc).isoformat()
         posted.append(rec)
