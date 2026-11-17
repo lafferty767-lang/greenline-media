@@ -419,8 +419,9 @@
     "video": "videos/34-squad-vs-one-zombie.mp4",
     "posted_on": "2026-11-16",
     "post_id": "6afacc2660a910801c82b94a",
-    "status": "scheduled",
-    "due_at": "2026-11-16T23:30:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-16T23:30:00+00:00",
+    "link": "https://www.tiktok.com/@playgreenline/video/7708915882021391630?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
   },
   {
     "network": "youtube",
@@ -428,8 +429,9 @@
     "video": "videos/34-squad-vs-one-zombie.mp4",
     "posted_on": "2026-11-16",
     "post_id": "6afacc268e87c256a3c83b99",
-    "status": "scheduled",
-    "due_at": "2026-11-16T23:30:00+00:00"
+    "status": "sent",
+    "due_at": "2026-11-16T23:30:00+00:00",
+    "link": "https://www.youtube.com/shorts/sK1fuVo-C_E"
   },
   {
     "network": "facebook",
@@ -437,7 +439,35 @@
     "video": "videos/34-squad-vs-one-zombie.mp4",
     "posted_on": "2026-11-16",
     "post_id": "6afacc27a869c35e5bd1a81c",
+    "status": "sent",
+    "due_at": "2026-11-16T23:30:00+00:00",
+    "link": "https://www.facebook.com/reel/2073749136762674/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-17",
+    "video": "videos/35-medic-save.mp4",
+    "posted_on": "2026-11-17",
+    "post_id": "6afc7838104bf3e6248c2bbe",
     "status": "scheduled",
-    "due_at": "2026-11-16T23:30:00+00:00"
+    "due_at": "2026-11-18T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-17",
+    "video": "videos/35-medic-save.mp4",
+    "posted_on": "2026-11-17",
+    "post_id": "6afc78397a7b613f168a7660",
+    "status": "scheduled",
+    "due_at": "2026-11-18T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-17",
+    "video": "videos/35-medic-save.mp4",
+    "posted_on": "2026-11-17",
+    "post_id": "6afc7839104bf3e6248c2c6e",
+    "status": "scheduled",
+    "due_at": "2026-11-18T02:00:00+00:00"
   }
 ]
