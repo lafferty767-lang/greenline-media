@@ -479,9 +479,10 @@
     "video": "videos/36-meet-the-lurker.mp4",
     "posted_on": "2026-11-18",
     "post_id": "6afddbe57f787ce2b195047b",
-    "status": "scheduled",
+    "status": "error",
     "scheduling": "notification",
-    "due_at": "2026-11-18T23:30:00+00:00"
+    "due_at": "2026-11-18T23:30:00+00:00",
+    "error": "Whoops! We are having trouble sending notifications to your mobile device. Please try linking a mobile device to your account! (https://support.buffer.com/articles/using-notification-publishing-gvZQiMxVa2?utm_source=buffer&utm_medium=error-message-link&utm_campaign=error-message)"
   },
   {
     "network": "youtube",
@@ -489,9 +490,10 @@
     "video": "videos/36-meet-the-lurker.mp4",
     "posted_on": "2026-11-18",
     "post_id": "6afddbe67f787ce2b19504ea",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-18T23:30:00+00:00"
+    "due_at": "2026-11-18T23:30:00+00:00",
+    "link": "https://www.youtube.com/shorts/WQg1FPfHh2s"
   },
   {
     "network": "facebook",
@@ -499,8 +501,39 @@
     "video": "videos/36-meet-the-lurker.mp4",
     "posted_on": "2026-11-18",
     "post_id": "6afddbe67f787ce2b1950523",
+    "status": "sent",
+    "scheduling": "automatic",
+    "due_at": "2026-11-18T23:30:00+00:00",
+    "link": "https://www.facebook.com/reel/976913641825205/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-18",
+    "video": "videos/36-meet-the-lurker.mp4",
+    "posted_on": "2026-11-19",
+    "post_id": "6afecafeafb354f53deec355",
+    "status": "scheduled",
+    "scheduling": "notification",
+    "due_at": "2026-11-20T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-19",
+    "video": "videos/37-who-is-hiding.mp4",
+    "posted_on": "2026-11-19",
+    "post_id": "6afecafef42e5c5a0a675da7",
     "status": "scheduled",
     "scheduling": "automatic",
-    "due_at": "2026-11-18T23:30:00+00:00"
+    "due_at": "2026-11-20T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-19",
+    "video": "videos/37-who-is-hiding.mp4",
+    "posted_on": "2026-11-19",
+    "post_id": "6afecaffe0bc9a7587d44457",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-20T02:00:00+00:00"
   }
 ]
