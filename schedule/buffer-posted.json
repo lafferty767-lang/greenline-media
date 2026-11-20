@@ -540,16 +540,6 @@
     "link": "https://www.facebook.com/reel/2282271309298109/"
   },
   {
-    "network": "tiktok",
-    "date": "2026-11-18",
-    "video": "videos/36-meet-the-lurker.mp4",
-    "posted_on": "2026-11-20",
-    "post_id": "6b004072234b6bb6ee95d8b5",
-    "status": "scheduled",
-    "scheduling": "notification",
-    "due_at": "2026-11-20T23:30:00+00:00"
-  },
-  {
     "network": "youtube",
     "date": "2026-11-20",
     "video": "videos/38-we-broke-our-zombies.mp4",
@@ -568,5 +558,15 @@
     "status": "scheduled",
     "scheduling": "automatic",
     "due_at": "2026-11-20T23:30:00+00:00"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-18",
+    "video": "videos/36-meet-the-lurker.mp4",
+    "posted_on": "2026-11-20",
+    "post_id": "6b00bfafd9cbb430a1fb7e3f",
+    "status": "sent",
+    "scheduling": "automatic",
+    "link": "https://tiktok.com/@playgreenline/video/7710373312303582477"
   }
 ]
