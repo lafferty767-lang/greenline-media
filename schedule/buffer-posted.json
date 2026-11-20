@@ -512,9 +512,10 @@
     "video": "videos/36-meet-the-lurker.mp4",
     "posted_on": "2026-11-19",
     "post_id": "6afecafeafb354f53deec355",
-    "status": "scheduled",
+    "status": "error",
     "scheduling": "notification",
-    "due_at": "2026-11-20T02:00:00+00:00"
+    "due_at": "2026-11-20T02:00:00+00:00",
+    "error": "Whoops! We are having trouble sending notifications to your mobile device. Please try linking a mobile device to your account! (https://support.buffer.com/articles/using-notification-publishing-gvZQiMxVa2?utm_source=buffer&utm_medium=error-message-link&utm_campaign=error-message)"
   },
   {
     "network": "youtube",
@@ -522,9 +523,10 @@
     "video": "videos/37-who-is-hiding.mp4",
     "posted_on": "2026-11-19",
     "post_id": "6afecafef42e5c5a0a675da7",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-20T02:00:00+00:00"
+    "due_at": "2026-11-20T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/Vsrw6_gVze4"
   },
   {
     "network": "facebook",
@@ -532,8 +534,39 @@
     "video": "videos/37-who-is-hiding.mp4",
     "posted_on": "2026-11-19",
     "post_id": "6afecaffe0bc9a7587d44457",
+    "status": "sent",
+    "scheduling": "automatic",
+    "due_at": "2026-11-20T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/2282271309298109/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-18",
+    "video": "videos/36-meet-the-lurker.mp4",
+    "posted_on": "2026-11-20",
+    "post_id": "6b004072234b6bb6ee95d8b5",
+    "status": "scheduled",
+    "scheduling": "notification",
+    "due_at": "2026-11-20T23:30:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-20",
+    "video": "videos/38-we-broke-our-zombies.mp4",
+    "posted_on": "2026-11-20",
+    "post_id": "6b0040735d9549971ca57476",
     "status": "scheduled",
     "scheduling": "automatic",
-    "due_at": "2026-11-20T02:00:00+00:00"
+    "due_at": "2026-11-20T23:30:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-20",
+    "video": "videos/38-we-broke-our-zombies.mp4",
+    "posted_on": "2026-11-20",
+    "post_id": "6b004073fc5b97f0f8060085",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-20T23:30:00+00:00"
   }
 ]
