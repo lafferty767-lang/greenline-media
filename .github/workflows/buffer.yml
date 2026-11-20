@@ -42,8 +42,10 @@ jobs:
           POST_AT: "18:00"
           POST_NOW: ${{ github.event_name == 'workflow_dispatch' }}
           YOUTUBE_MADE_FOR_KIDS: "true"
-          # TikTok arrives as a reminder in the Buffer phone app so a trending sound can be added. "automatic" turns it back.
-          TIKTOK_SCHEDULING: "notification"
+          # "automatic": Buffer posts TikTok by itself. "notification" sends it to the Buffer phone app instead, so a
+          # trending sound can be added by hand; that only works once the phone is signed in to the Buffer app with
+          # notifications on (Nov 18-20 reminders failed: no phone linked).
+          TIKTOK_SCHEDULING: "automatic"
         run: python3 poster/post_buffer.py
 
       - name: Remember what was posted

@@ -200,9 +200,16 @@ def main():
     schedule = load(SCHEDULE, [])
     posted = load(POSTED, [])
 
+    # A TikTok post still waiting in Buffer under the other scheduling type (TIKTOK_SCHEDULING was changed since):
+    # it gets deleted below so this run posts it again the new way.
+    utc_now = datetime.datetime.now(datetime.timezone.utc)
+    redo = [r for r in posted if r["network"] == "tiktok" and r.get("status") not in FINAL
+            and r.get("scheduling", "automatic") != TIKTOK_SCHEDULING
+            and r.get("due_at") and datetime.datetime.fromisoformat(r["due_at"]) > utc_now]
+
     # Nothing to do (every network has today's post and nothing earlier is pending): skip the API calls.
     pending = [r for r in posted if r.get("status") not in FINAL and r["posted_on"] < day]
-    if not dry and not pending and all(any(r["network"] == net and r["posted_on"] == day for r in posted) or not any(net in e for e in schedule) for net in NETWORKS):
+    if not dry and not pending and not redo and all(any(r["network"] == net and r["posted_on"] == day for r in posted) or not any(net in e for e in schedule) for net in NETWORKS):
         print(f"Everything for {day} is already handed to Buffer.")
         return
 
@@ -216,6 +223,15 @@ def main():
         fail("This Buffer key can't see a Buffer organization.")
     channels = gql(key, CHANNELS, {"org": orgs[0]["id"]})["channels"]
     problems = []
+
+    for rec in ([] if dry else redo):
+        gone = gql(key, DELETE, {"id": rec["post_id"]}, fatal=False)
+        if (gone or {}).get("deletePost", {}).get("__typename") == "DeletePostSuccess":
+            posted.remove(rec)
+            print(f"TikTok: {rec['video']} was waiting as a {rec.get('scheduling', 'automatic')} post, so it was deleted and posts as {TIKTOK_SCHEDULING} instead.")
+        else:
+            problems.append(f"TikTok: couldn't delete the waiting {rec.get('scheduling')} post for {rec['video']}. Delete it at publish.buffer.com.")
+    save(posted)
 
     # Posts from earlier runs that were still publishing: see how they ended.
     yesterday = (datetime.date.fromisoformat(day) - datetime.timedelta(days=1)).isoformat()
