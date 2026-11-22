@@ -577,9 +577,10 @@
     "video": "videos/37-who-is-hiding.mp4",
     "posted_on": "2026-11-21",
     "post_id": "6b018dffd5eabfb8cc2c78e1",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-22T02:00:00+00:00"
+    "due_at": "2026-11-22T02:00:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7710809923722022157"
   },
   {
     "network": "youtube",
@@ -587,9 +588,10 @@
     "video": "videos/39-pick-your-class.mp4",
     "posted_on": "2026-11-21",
     "post_id": "6b018e000247969092ce7f03",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-22T02:00:00+00:00"
+    "due_at": "2026-11-22T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/yR3GUYRYlOw"
   },
   {
     "network": "facebook",
@@ -597,8 +599,39 @@
     "video": "videos/39-pick-your-class.mp4",
     "posted_on": "2026-11-21",
     "post_id": "6b018e000247969092ce7f2e",
+    "status": "sent",
+    "scheduling": "automatic",
+    "due_at": "2026-11-22T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/2676345856138790/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-20",
+    "video": "videos/38-we-broke-our-zombies.mp4",
+    "posted_on": "2026-11-22",
+    "post_id": "6b02b88102479690923bbd99",
     "status": "scheduled",
     "scheduling": "automatic",
-    "due_at": "2026-11-22T02:00:00+00:00"
+    "due_at": "2026-11-22T23:30:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-22",
+    "video": "videos/30-level-1-vs-max.mp4",
+    "posted_on": "2026-11-22",
+    "post_id": "6b02b882cc364169c1420b5c",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-22T23:30:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-22",
+    "video": "videos/30-level-1-vs-max.mp4",
+    "posted_on": "2026-11-22",
+    "post_id": "6b02b88202479690923bbe91",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-22T23:30:00+00:00"
   }
 ]
