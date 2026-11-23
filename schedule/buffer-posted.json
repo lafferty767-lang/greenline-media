@@ -610,9 +610,10 @@
     "video": "videos/38-we-broke-our-zombies.mp4",
     "posted_on": "2026-11-22",
     "post_id": "6b02b88102479690923bbd99",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-22T23:30:00+00:00"
+    "due_at": "2026-11-22T23:30:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7711142185877441806"
   },
   {
     "network": "youtube",
@@ -620,9 +621,10 @@
     "video": "videos/30-level-1-vs-max.mp4",
     "posted_on": "2026-11-22",
     "post_id": "6b02b882cc364169c1420b5c",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-22T23:30:00+00:00"
+    "due_at": "2026-11-22T23:30:00+00:00",
+    "link": "https://www.youtube.com/shorts/q18wpPU9Sjk"
   },
   {
     "network": "facebook",
@@ -630,8 +632,39 @@
     "video": "videos/30-level-1-vs-max.mp4",
     "posted_on": "2026-11-22",
     "post_id": "6b02b88202479690923bbe91",
+    "status": "sent",
+    "scheduling": "automatic",
+    "due_at": "2026-11-22T23:30:00+00:00",
+    "link": "https://www.facebook.com/reel/1687330879412735/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-21",
+    "video": "videos/39-pick-your-class.mp4",
+    "posted_on": "2026-11-23",
+    "post_id": "6b049c3dd73c10ed4ca4692d",
     "status": "scheduled",
     "scheduling": "automatic",
-    "due_at": "2026-11-22T23:30:00+00:00"
+    "due_at": "2026-11-24T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-23",
+    "video": "videos/31-big-head-mode.mp4",
+    "posted_on": "2026-11-23",
+    "post_id": "6b049c3ea083c79d702dcbb3",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-24T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-23",
+    "video": "videos/31-big-head-mode.mp4",
+    "posted_on": "2026-11-23",
+    "post_id": "6b049c3fa083c79d702dcbe5",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-24T02:00:00+00:00"
   }
 ]
