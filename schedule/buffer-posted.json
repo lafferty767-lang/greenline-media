@@ -643,9 +643,10 @@
     "video": "videos/39-pick-your-class.mp4",
     "posted_on": "2026-11-23",
     "post_id": "6b049c3dd73c10ed4ca4692d",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-24T02:00:00+00:00"
+    "due_at": "2026-11-24T02:00:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7711552058331122958"
   },
   {
     "network": "youtube",
@@ -653,9 +654,10 @@
     "video": "videos/31-big-head-mode.mp4",
     "posted_on": "2026-11-23",
     "post_id": "6b049c3ea083c79d702dcbb3",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-24T02:00:00+00:00"
+    "due_at": "2026-11-24T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/yxLfAAQcv0Y"
   },
   {
     "network": "facebook",
@@ -663,8 +665,39 @@
     "video": "videos/31-big-head-mode.mp4",
     "posted_on": "2026-11-23",
     "post_id": "6b049c3fa083c79d702dcbe5",
+    "status": "sent",
+    "scheduling": "automatic",
+    "due_at": "2026-11-24T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/4717779058545575/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-22",
+    "video": "videos/30-level-1-vs-max.mp4",
+    "posted_on": "2026-11-24",
+    "post_id": "6b05c92d9694e6b56704d65b",
     "status": "scheduled",
     "scheduling": "automatic",
-    "due_at": "2026-11-24T02:00:00+00:00"
+    "due_at": "2026-11-24T23:30:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-24",
+    "video": "videos/32-screenshot-your-boss.mp4",
+    "posted_on": "2026-11-24",
+    "post_id": "6b05c92ea1fe31a32b2d8cf3",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-24T23:30:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-24",
+    "video": "videos/32-screenshot-your-boss.mp4",
+    "posted_on": "2026-11-24",
+    "post_id": "6b05c92f20f9e770f07dc600",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-24T23:30:00+00:00"
   }
 ]
