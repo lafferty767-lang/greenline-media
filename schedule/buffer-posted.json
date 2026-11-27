@@ -742,9 +742,10 @@
     "video": "videos/32-screenshot-your-boss.mp4",
     "posted_on": "2026-11-26",
     "post_id": "6b080d5bed9dce3bdaff4032",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-27T02:00:00+00:00"
+    "due_at": "2026-11-27T02:00:00+00:00",
+    "link": "https://tiktok.com/@playgreenline/video/7712665273085611277"
   },
   {
     "network": "youtube",
@@ -752,9 +753,10 @@
     "video": "videos/23-rat-king-or-dr-verde.mp4",
     "posted_on": "2026-11-26",
     "post_id": "6b080d5cd8848786e0d99921",
-    "status": "scheduled",
+    "status": "sent",
     "scheduling": "automatic",
-    "due_at": "2026-11-27T02:00:00+00:00"
+    "due_at": "2026-11-27T02:00:00+00:00",
+    "link": "https://www.youtube.com/shorts/irbE8O0Ykm0"
   },
   {
     "network": "facebook",
@@ -762,8 +764,39 @@
     "video": "videos/23-rat-king-or-dr-verde.mp4",
     "posted_on": "2026-11-26",
     "post_id": "6b080d5cb56cc066e5bda81d",
+    "status": "sent",
+    "scheduling": "automatic",
+    "due_at": "2026-11-27T02:00:00+00:00",
+    "link": "https://www.facebook.com/reel/1786007385818529/"
+  },
+  {
+    "network": "tiktok",
+    "date": "2026-11-25",
+    "video": "videos/33-secret-room.mp4",
+    "posted_on": "2026-11-27",
+    "post_id": "6b09890632c212878fd3857c",
     "status": "scheduled",
     "scheduling": "automatic",
-    "due_at": "2026-11-27T02:00:00+00:00"
+    "due_at": "2026-11-28T02:00:00+00:00"
+  },
+  {
+    "network": "youtube",
+    "date": "2026-11-27",
+    "video": "videos/24-guess-mall-cop.mp4",
+    "posted_on": "2026-11-27",
+    "post_id": "6b09890618c8c6749beaa0d6",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-28T02:00:00+00:00"
+  },
+  {
+    "network": "facebook",
+    "date": "2026-11-27",
+    "video": "videos/24-guess-mall-cop.mp4",
+    "posted_on": "2026-11-27",
+    "post_id": "6b09890732c212878fd385cf",
+    "status": "scheduled",
+    "scheduling": "automatic",
+    "due_at": "2026-11-28T02:00:00+00:00"
   }
 ]
